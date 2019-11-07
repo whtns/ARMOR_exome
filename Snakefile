@@ -66,6 +66,11 @@ def stringtie_output(wildcards):
 	input = []
 	input.extend(expand(outputdir + "stringtie/{sample}/{sample}.gtf", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	return input
+	
+def dbtss_output(wildcards):
+	input = []
+	input.extend(expand(outputdir + "dbtss_coverage/{sample}_dbtss_coverage_over_10.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
+	return input
 
 ## ------------------------------------------------------------------------------------ ##
 ## Target definitions
@@ -75,7 +80,8 @@ rule all:
 	input:
 		outputdir + "MultiQC/multiqc_report.html",
 		outputdir + "seurat/unfiltered_seu.rds",
-		stringtie_output
+		stringtie_output,
+		dbtss_output
 
 rule setup:
 	input:
@@ -133,6 +139,11 @@ rule runhisat2:
 	input:
 		expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()),
 		expand(outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist())
+		
+## DBTSS coverage
+rule rundbtss:
+	input:
+		expand(outputdir + "dbtss_coverage/{sample}/{sample}_dbtss_coverage.txt", sample = samples.names.values.tolist())
 
 ## List all the packages that were used by the R analyses
 rule listpackages:
@@ -818,6 +829,30 @@ rule shiny:
 		Renv
 	shell:
 		'''{Rbin} CMD BATCH --no-restore --no-save "--args se='{input.rds}' gtffile='{input.gtf}' rmdtemplate='{input.template}' outputfile='prepare_shiny.html' {params.p}" {input.script} {log}'''
+		
+## ------------------------------------------------------------------------------------ ##
+## dbtss coverage mapping
+## ------------------------------------------------------------------------------------ ##
+## compute coverage from dbtss
+rule dbtss:
+	input:
+		sorted_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+	output:
+		coverage_txt = outputdir + "dbtss_coverage/{sample}_dbtss_coverage_over_10.txt"
+	threads:
+		config["ncores"]
+	log:
+		outputdir + "logs/dbtss_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/dbtss_{sample}.txt"
+	params:
+		dbtss_bed = config["dbtss_bed"],
+		genome_file = config["chrom_sizes"]
+	conda:
+		"envs/environment.yaml"
+	shell:
+	  "bedtools coverage -sorted -g {params.genome_file} -a {params.dbtss_bed} -b {input.sorted_bam} | awk '$4 > 10 {{print}}' > {output.coverage_txt}"
+
 
 ## ------------------------------------------------------------------------------------ ##
 ## Success and failure messages
