@@ -1,5 +1,0 @@
-Building DAG of jobs...
-InputFunctionException in line 74 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
-WildcardError: No values given for wildcard 'sample'.
-Wildcards:
-

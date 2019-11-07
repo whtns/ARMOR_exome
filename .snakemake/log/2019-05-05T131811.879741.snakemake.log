@@ -1,3 +1,0 @@
-KeyError in line 423 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
-'HISAT2index'
-  File "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile", line 423, in <module>

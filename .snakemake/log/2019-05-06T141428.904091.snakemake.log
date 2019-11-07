@@ -1,3 +1,0 @@
-KeyError in line 671 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
-'proj_dir'
-  File "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile", line 671, in <module>

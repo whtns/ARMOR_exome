@@ -1,4 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 252 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
-Missing input files for rule fastqctrimmed:
-../output/FASTQtrimmed/shl20190501-01_R1.fq.gz

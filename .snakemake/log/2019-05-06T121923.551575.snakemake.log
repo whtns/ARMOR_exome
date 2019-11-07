@@ -1,3 +1,0 @@
-NameError in line 72 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
-name 'stringtie_output' is not defined
-  File "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile", line 72, in <module>

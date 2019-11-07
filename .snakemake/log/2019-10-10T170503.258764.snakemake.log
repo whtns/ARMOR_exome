@@ -1,9 +1,0 @@
-EmptyDataError in line 34 of /dataVolume/storage/single_cell_projects/project_template/ARMOR/Snakefile:
-No columns to parse from file
-  File "/dataVolume/storage/single_cell_projects/project_template/ARMOR/Snakefile", line 34, in <module>
-  File "/opt/miniconda3/envs/ARMOR/lib/python3.6/site-packages/pandas/io/parsers.py", line 702, in parser_f
-  File "/opt/miniconda3/envs/ARMOR/lib/python3.6/site-packages/pandas/io/parsers.py", line 429, in _read
-  File "/opt/miniconda3/envs/ARMOR/lib/python3.6/site-packages/pandas/io/parsers.py", line 895, in __init__
-  File "/opt/miniconda3/envs/ARMOR/lib/python3.6/site-packages/pandas/io/parsers.py", line 1122, in _make_engine
-  File "/opt/miniconda3/envs/ARMOR/lib/python3.6/site-packages/pandas/io/parsers.py", line 1853, in __init__
-  File "pandas/_libs/parsers.pyx", line 545, in pandas._libs.parsers.TextReader.__cinit__

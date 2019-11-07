@@ -1,5 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 362 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
-Missing input files for rule trimgalorePE:
-../data/FASTQ/1_R1.fastq.gz
-../data/FASTQ/1_R2.fastq.gz
