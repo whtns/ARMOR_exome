@@ -1,0 +1,12 @@
+prefix=/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: cairo-pdf
+Description: PDF surface backend for cairo graphics library
+Version: 1.16.0
+
+Requires: cairo 
+Libs: -lz 
+Cflags: -I${includedir}/cairo 

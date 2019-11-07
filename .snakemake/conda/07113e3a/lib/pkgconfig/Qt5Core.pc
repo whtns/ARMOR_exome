@@ -1,0 +1,15 @@
+prefix=/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/qt
+
+host_bins=${prefix}/bin
+qt_config=minimal-config small-config medium-config large-config full-config gtk2 gtkstyle fontconfig evdev xlib xrender xcb-plugin xcb-qt xcb-glx xcb-xlib xcb-sm xkbcommon-qt accessibility-atspi-bridge c++11 accessibility opengl shared qpa reduce_exports reduce_relocations clock-gettime clock-monotonic posix_fallocate mremap getaddrinfo ipv6ifname getifaddrs inotify eventfd threadsafe-cloexec system-jpeg system-png png system-freetype harfbuzz system-zlib glib dbus dbus-linked openssl xcb rpath icu concurrent audio-backend release
+
+Name: Qt5 Core
+Description: Qt Core module
+Version: 5.6.2
+Libs: -L${libdir} -lQt5Core 
+Libs.private: -lpthread -lz -licui18n -licuuc -licudata -L/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib -lqtpcre -lm -ldl -pthread -L/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib -lgthread-2.0 -lglib-2.0 -lrt  
+Cflags: -I${includedir}/QtCore -I${includedir}
+

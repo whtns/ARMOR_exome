@@ -1,0 +1,44 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	edgeR
+	1	shiny
+	1	stringtie
+	4
+
+[Mon May  6 13:28:59 2019]
+rule stringtie:
+    input: ../output/HISAT2/shl20190501-001/shl20190501-001_Aligned.sortedByCoord.out.bam
+    output: ../output/stringtie/shl20190501-001/shl20190501-001.gtf
+    log: ../output/logs/stringtie_shl20190501-001.log
+    jobid: 3
+    benchmark: ../output/benchmarks/stringtie_shl20190501-001.txt
+    wildcards: sample=shl20190501-001
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Mon May  6 13:29:37 2019]
+Finished job 3.
+1 of 4 steps (25%) done
+
+[Mon May  6 13:29:37 2019]
+rule edgeR:
+    input: ../output/Rout/pkginstall_state.txt, ../output/outputR/tximeta_se.rds, scripts/run_render.R, scripts/edgeR_dge.Rmd
+    output: ../output/outputR/edgeR_dge.html, ../output/outputR/edgeR_dge.rds
+    log: ../output/Rout/run_dge_edgeR.Rout
+    jobid: 12
+    benchmark: ../output/benchmarks/run_dge_edgeR.txt
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 701 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
+Missing files after 5 seconds:
+../output/outputR/edgeR_dge.html
+../output/outputR/edgeR_dge.rds
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/log/2019-05-06T132858.175761.snakemake.log

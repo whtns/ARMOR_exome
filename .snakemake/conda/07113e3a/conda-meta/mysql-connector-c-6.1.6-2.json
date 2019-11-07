@@ -1,0 +1,421 @@
+{
+  "build": "2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [
+    "libgcc"
+  ],
+  "extracted_package_dir": "/opt/miniconda3/pkgs/mysql-connector-c-6.1.6-2",
+  "features": "",
+  "files": [
+    "COPYING",
+    "README",
+    "bin/my_print_defaults",
+    "bin/mysql_config",
+    "bin/perror",
+    "docs/ChangeLog",
+    "docs/INFO_BIN",
+    "docs/INFO_SRC",
+    "include/big_endian.h",
+    "include/byte_order_generic.h",
+    "include/byte_order_generic_x86.h",
+    "include/decimal.h",
+    "include/errmsg.h",
+    "include/keycache.h",
+    "include/little_endian.h",
+    "include/m_ctype.h",
+    "include/m_string.h",
+    "include/my_alloc.h",
+    "include/my_byteorder.h",
+    "include/my_compiler.h",
+    "include/my_config.h",
+    "include/my_dbug.h",
+    "include/my_dir.h",
+    "include/my_getopt.h",
+    "include/my_global.h",
+    "include/my_list.h",
+    "include/my_pthread.h",
+    "include/my_sys.h",
+    "include/my_xml.h",
+    "include/mysql.h",
+    "include/mysql/client_authentication.h",
+    "include/mysql/client_plugin.h",
+    "include/mysql/client_plugin.h.pp",
+    "include/mysql/get_password.h",
+    "include/mysql/plugin_auth_common.h",
+    "include/mysql/plugin_trace.h",
+    "include/mysql/psi/mysql_file.h",
+    "include/mysql/psi/mysql_idle.h",
+    "include/mysql/psi/mysql_mdl.h",
+    "include/mysql/psi/mysql_memory.h",
+    "include/mysql/psi/mysql_ps.h",
+    "include/mysql/psi/mysql_socket.h",
+    "include/mysql/psi/mysql_sp.h",
+    "include/mysql/psi/mysql_stage.h",
+    "include/mysql/psi/mysql_statement.h",
+    "include/mysql/psi/mysql_table.h",
+    "include/mysql/psi/mysql_thread.h",
+    "include/mysql/psi/mysql_transaction.h",
+    "include/mysql/psi/psi.h",
+    "include/mysql/psi/psi_base.h",
+    "include/mysql/psi/psi_memory.h",
+    "include/mysql/service_my_snprintf.h",
+    "include/mysql/service_mysql_alloc.h",
+    "include/mysql_com.h",
+    "include/mysql_com_server.h",
+    "include/mysql_embed.h",
+    "include/mysql_time.h",
+    "include/mysql_version.h",
+    "include/mysqld_ername.h",
+    "include/mysqld_error.h",
+    "include/sql_common.h",
+    "include/sql_state.h",
+    "include/sslopt-case.h",
+    "include/sslopt-longopts.h",
+    "include/sslopt-vars.h",
+    "include/typelib.h",
+    "lib/libmysqlclient.a",
+    "lib/libmysqlclient.so",
+    "lib/libmysqlclient.so.18",
+    "lib/libmysqlclient.so.18.3.0",
+    "lib/libmysqlclient_r.a",
+    "lib/libmysqlclient_r.so",
+    "lib/libmysqlclient_r.so.18",
+    "lib/libmysqlclient_r.so.18.3.0"
+  ],
+  "fn": "mysql-connector-c-6.1.6-2.tar.bz2",
+  "license": "LGPL",
+  "link": {
+    "source": "/opt/miniconda3/pkgs/mysql-connector-c-6.1.6-2",
+    "type": 1
+  },
+  "md5": "bc5af5124487114c538a0f9b8fae9c2a",
+  "name": "mysql-connector-c",
+  "package_tarball_full_path": "/opt/miniconda3/pkgs/mysql-connector-c-6.1.6-2.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "COPYING",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "README",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "bin/my_print_defaults",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho",
+        "sha256_in_prefix": "0584e77ecb23f2945f1442b03b6b3a4fc7d5fbb117ff585edcbd9eb413f2af26"
+      },
+      {
+        "_path": "bin/mysql_config",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "70939e7db1e829039f875062c710946d95ddf05701deb1062bd773258f31daeb"
+      },
+      {
+        "_path": "bin/perror",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho",
+        "sha256_in_prefix": "1dc87aab1fd45418492a8fc2aa42c2f290814d8f12041369bc31f6d5767e7681"
+      },
+      {
+        "_path": "docs/ChangeLog",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "docs/INFO_BIN",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "be91713b5d8c6a2a9ddb7d8df57ba442d080015421e73f3a80a79a805b18814e"
+      },
+      {
+        "_path": "docs/INFO_SRC",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/big_endian.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/byte_order_generic.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/byte_order_generic_x86.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/decimal.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/errmsg.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/keycache.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/little_endian.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/m_ctype.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/m_string.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_alloc.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_byteorder.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_compiler.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_config.h",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "30318dc7d9fa79ae9253b4d5a919f37322e1a752403358f0bba1de054816daeb"
+      },
+      {
+        "_path": "include/my_dbug.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_dir.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_getopt.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_global.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_list.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_pthread.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_sys.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/my_xml.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/client_authentication.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/client_plugin.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/client_plugin.h.pp",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/get_password.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/plugin_auth_common.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/plugin_trace.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_file.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_idle.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_mdl.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_memory.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_ps.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_socket.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_sp.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_stage.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_statement.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_table.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_thread.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/mysql_transaction.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/psi.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/psi_base.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/psi/psi_memory.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/service_my_snprintf.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql/service_mysql_alloc.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql_com.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql_com_server.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql_embed.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql_time.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysql_version.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysqld_ername.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/mysqld_error.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/sql_common.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/sql_state.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/sslopt-case.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/sslopt-longopts.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/sslopt-vars.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/typelib.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "lib/libmysqlclient.a",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "lib/libmysqlclient.so",
+        "path_type": "softlink"
+      },
+      {
+        "_path": "lib/libmysqlclient.so.18",
+        "path_type": "softlink"
+      },
+      {
+        "_path": "lib/libmysqlclient.so.18.3.0",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho",
+        "sha256_in_prefix": "d8d7851f87f94d3441bc74df455eb5097534b100874bdc15bb0bee873eb0b6f6"
+      },
+      {
+        "_path": "lib/libmysqlclient_r.a",
+        "path_type": "softlink"
+      },
+      {
+        "_path": "lib/libmysqlclient_r.so",
+        "path_type": "softlink"
+      },
+      {
+        "_path": "lib/libmysqlclient_r.so.18",
+        "path_type": "softlink"
+      },
+      {
+        "_path": "lib/libmysqlclient_r.so.18.3.0",
+        "path_type": "softlink"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "size": 10111480,
+  "subdir": "linux-64",
+  "track_features": "",
+  "url": "https://conda.anaconda.org/bioconda/linux-64/mysql-connector-c-6.1.6-2.tar.bz2",
+  "version": "6.1.6"
+}

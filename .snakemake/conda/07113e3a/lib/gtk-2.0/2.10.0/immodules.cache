@@ -1,0 +1,40 @@
+# GTK+ Input Method Modules file
+# Automatically generated file, do not edit
+# Created by /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/bin/gtk-query-immodules-2.0 from gtk+-2.24.31
+#
+# ModulesPath = /home/conda/.gtk-2.0/2.10.0/x86_64-unknown-linux-gnu/immodules:/home/conda/.gtk-2.0/2.10.0/immodules:/home/conda/.gtk-2.0/x86_64-unknown-linux-gnu/immodules:/home/conda/.gtk-2.0/immodules:/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/x86_64-unknown-linux-gnu/immodules:/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules:/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/x86_64-unknown-linux-gnu/immodules:/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/immodules
+#
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-inuktitut.so" 
+"inuktitut" "Inuktitut (Transliterated)" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "iu" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-cedilla.so" 
+"cedilla" "Cedilla" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "az:ca:co:fr:gv:oc:pt:sq:tr:wa" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-ti-et.so" 
+"ti_et" "Tigrigna-Ethiopian (EZ+)" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "ti" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-ti-er.so" 
+"ti_er" "Tigrigna-Eritrean (EZ+)" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "ti" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-cyrillic-translit.so" 
+"cyrillic_translit" "Cyrillic (Transliterated)" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-multipress.so" 
+"multipress" "Multipress" "gtk20" "" "" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-ipa.so" 
+"ipa" "IPA" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-xim.so" 
+"xim" "X Input Method" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "ko:ja:th:zh" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-am-et.so" 
+"am_et" "Amharic (EZ+)" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "am" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-viqr.so" 
+"viqr" "Vietnamese (VIQR)" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "vi" 
+
+"/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib/gtk-2.0/2.10.0/immodules/im-thai.so" 
+"thai" "Thai-Lao" "gtk20" "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/share/locale" "lo:th" 
+
+

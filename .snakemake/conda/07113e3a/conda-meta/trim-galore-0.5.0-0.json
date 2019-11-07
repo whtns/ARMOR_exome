@@ -1,0 +1,45 @@
+{
+  "build": "0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [
+    "cutadapt",
+    "fastqc",
+    "perl"
+  ],
+  "extracted_package_dir": "/opt/miniconda3/pkgs/trim-galore-0.5.0-0",
+  "features": "",
+  "files": [
+    "bin/trim_galore"
+  ],
+  "fn": "trim-galore-0.5.0-0.tar.bz2",
+  "license": "GPL",
+  "license_family": "GPL",
+  "link": {
+    "source": "/opt/miniconda3/pkgs/trim-galore-0.5.0-0",
+    "type": 1
+  },
+  "md5": "ff26d44db91ef5d72f4467f7320eb9cd",
+  "name": "trim-galore",
+  "package_tarball_full_path": "/opt/miniconda3/pkgs/trim-galore-0.5.0-0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/trim_galore",
+        "path_type": "hardlink",
+        "sha256": "53b0c7b5c2435519fa5bc0c7908a7d489133411f25b151af7d1f35c7977a4932",
+        "sha256_in_prefix": "53b0c7b5c2435519fa5bc0c7908a7d489133411f25b151af7d1f35c7977a4932",
+        "size_in_bytes": 82454
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "trim-galore=0.5.0",
+  "size": 21961,
+  "subdir": "linux-64",
+  "timestamp": 1530271240802,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/bioconda/linux-64/trim-galore-0.5.0-0.tar.bz2",
+  "version": "0.5.0"
+}

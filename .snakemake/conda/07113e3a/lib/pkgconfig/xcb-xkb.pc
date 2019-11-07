@@ -1,0 +1,11 @@
+prefix=/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: XCB XKB
+Description: XCB Keyboard Extension (EXPERIMENTAL)
+Version: 1.13
+Requires.private: xcb
+Libs: -L${libdir} -lxcb-xkb
+Cflags: -I${includedir}

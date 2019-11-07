@@ -1,0 +1,295 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	721	bamindex
+	721	bigwig
+	1	edgeR
+	1	multiqc
+	720	salmonPE
+	1	shiny
+	719	starPE
+	2885
+
+[Wed May  8 10:08:11 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-384_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-384_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-384/shl20190501-384_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-384.log
+    jobid: 9041
+    benchmark: ../output/benchmarks/STAR_shl20190501-384.txt
+    wildcards: sample=shl20190501-384
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 10:15:20 2019]
+Finished job 9041.
+1 of 2885 steps (0.03%) done
+
+[Wed May  8 10:15:20 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-640_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-640_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-640/shl20190501-640_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-640.log
+    jobid: 9297
+    benchmark: ../output/benchmarks/STAR_shl20190501-640.txt
+    wildcards: sample=shl20190501-640
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 10:20:45 2019]
+Finished job 9297.
+2 of 2885 steps (0.07%) done
+
+[Wed May  8 10:20:45 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-199_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-199_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-199/shl20190501-199_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-199.log
+    jobid: 8856
+    benchmark: ../output/benchmarks/STAR_shl20190501-199.txt
+    wildcards: sample=shl20190501-199
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 10:25:43 2019]
+Finished job 8856.
+3 of 2885 steps (0.10%) done
+
+[Wed May  8 10:25:43 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-704_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-704_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-704/shl20190501-704_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-704.log
+    jobid: 9361
+    benchmark: ../output/benchmarks/STAR_shl20190501-704.txt
+    wildcards: sample=shl20190501-704
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 10:32:14 2019]
+Finished job 9361.
+4 of 2885 steps (0.14%) done
+
+[Wed May  8 10:32:14 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-633_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-633_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-633/shl20190501-633_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-633.log
+    jobid: 9290
+    benchmark: ../output/benchmarks/STAR_shl20190501-633.txt
+    wildcards: sample=shl20190501-633
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 10:37:53 2019]
+Finished job 9290.
+5 of 2885 steps (0.17%) done
+
+[Wed May  8 10:37:53 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-200_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-200_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-200/shl20190501-200_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-200.log
+    jobid: 8857
+    benchmark: ../output/benchmarks/STAR_shl20190501-200.txt
+    wildcards: sample=shl20190501-200
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 10:42:56 2019]
+Finished job 8857.
+6 of 2885 steps (0.21%) done
+
+[Wed May  8 10:42:56 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-631_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-631_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-631/shl20190501-631_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-631.log
+    jobid: 9288
+    benchmark: ../output/benchmarks/STAR_shl20190501-631.txt
+    wildcards: sample=shl20190501-631
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 10:48:00 2019]
+Finished job 9288.
+7 of 2885 steps (0.24%) done
+
+[Wed May  8 10:48:00 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-639_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-639_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-639/shl20190501-639_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-639.log
+    jobid: 9296
+    benchmark: ../output/benchmarks/STAR_shl20190501-639.txt
+    wildcards: sample=shl20190501-639
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 10:53:26 2019]
+Finished job 9296.
+8 of 2885 steps (0.28%) done
+
+[Wed May  8 10:53:26 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-706_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-706_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-706/shl20190501-706_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-706.log
+    jobid: 9363
+    benchmark: ../output/benchmarks/STAR_shl20190501-706.txt
+    wildcards: sample=shl20190501-706
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:00:56 2019]
+Finished job 9363.
+9 of 2885 steps (0.31%) done
+
+[Wed May  8 11:00:56 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-634_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-634_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-634/shl20190501-634_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-634.log
+    jobid: 9291
+    benchmark: ../output/benchmarks/STAR_shl20190501-634.txt
+    wildcards: sample=shl20190501-634
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:06:26 2019]
+Finished job 9291.
+10 of 2885 steps (0.35%) done
+
+[Wed May  8 11:06:26 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-648_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-648_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-648/shl20190501-648_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-648.log
+    jobid: 9305
+    benchmark: ../output/benchmarks/STAR_shl20190501-648.txt
+    wildcards: sample=shl20190501-648
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:13:13 2019]
+Finished job 9305.
+11 of 2885 steps (0.38%) done
+
+[Wed May  8 11:13:13 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-604_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-604_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-604/shl20190501-604_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-604.log
+    jobid: 9261
+    benchmark: ../output/benchmarks/STAR_shl20190501-604.txt
+    wildcards: sample=shl20190501-604
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:17:57 2019]
+Finished job 9261.
+12 of 2885 steps (0.42%) done
+
+[Wed May  8 11:17:57 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-659_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-659_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-659/shl20190501-659_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-659.log
+    jobid: 9316
+    benchmark: ../output/benchmarks/STAR_shl20190501-659.txt
+    wildcards: sample=shl20190501-659
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:24:05 2019]
+Finished job 9316.
+13 of 2885 steps (0.45%) done
+
+[Wed May  8 11:24:05 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-708_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-708_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-708/shl20190501-708_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-708.log
+    jobid: 9365
+    benchmark: ../output/benchmarks/STAR_shl20190501-708.txt
+    wildcards: sample=shl20190501-708
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:30:58 2019]
+Finished job 9365.
+14 of 2885 steps (0.49%) done
+
+[Wed May  8 11:30:58 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-177_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-177_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-177/shl20190501-177_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-177.log
+    jobid: 8834
+    benchmark: ../output/benchmarks/STAR_shl20190501-177.txt
+    wildcards: sample=shl20190501-177
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:35:57 2019]
+Finished job 8834.
+15 of 2885 steps (0.52%) done
+
+[Wed May  8 11:35:57 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-192_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-192_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-192/shl20190501-192_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-192.log
+    jobid: 8849
+    benchmark: ../output/benchmarks/STAR_shl20190501-192.txt
+    wildcards: sample=shl20190501-192
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:40:38 2019]
+Finished job 8849.
+16 of 2885 steps (0.55%) done
+
+[Wed May  8 11:40:38 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-692_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-692_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-692/shl20190501-692_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-692.log
+    jobid: 9349
+    benchmark: ../output/benchmarks/STAR_shl20190501-692.txt
+    wildcards: sample=shl20190501-692
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:47:03 2019]
+Finished job 9349.
+17 of 2885 steps (0.59%) done
+
+[Wed May  8 11:47:03 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-605_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-605_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-605/shl20190501-605_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-605.log
+    jobid: 9262
+    benchmark: ../output/benchmarks/STAR_shl20190501-605.txt
+    wildcards: sample=shl20190501-605
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Wed May  8 11:51:29 2019]
+Finished job 9262.
+18 of 2885 steps (0.62%) done
+
+[Wed May  8 11:51:29 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-244_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-244_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-244/shl20190501-244_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-244.log
+    jobid: 8901
+    benchmark: ../output/benchmarks/STAR_shl20190501-244.txt
+    wildcards: sample=shl20190501-244
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+Terminating processes on user request, this might take some time.
+[Wed May  8 11:53:35 2019]
+Error in rule starPE:
+    jobid: 8901
+    output: ../output/STAR/shl20190501-244/shl20190501-244_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-244.log
+    conda-env: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+
+RuleException:
+CalledProcessError in line 589 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
+Command 'source /opt/miniconda3/bin/activate '/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a'; set -euo pipefail;  echo 'STAR version:
+' > ../output/logs/STAR_shl20190501-244.log; STAR --version >> ../output/logs/STAR_shl20190501-244.log; STAR --genomeDir /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx --readFilesIn ../output/FASTQtrimmed/shl20190501-244_R1_val_1.fq.gz ../output/FASTQtrimmed/shl20190501-244_R2_val_2.fq.gz --runThreadN 1 --outFileNamePrefix ../output/STAR/shl20190501-244/shl20190501-244_ --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c' died with <Signals.SIGINT: 2>.
+  File "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile", line 589, in __rule_starPE
+  File "/opt/miniconda3/envs/ARMOR/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job starPE since they might be corrupted:
+../output/STAR/shl20190501-244/shl20190501-244_Aligned.sortedByCoord.out.bam
+Complete log: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/log/2019-05-08T100803.264016.snakemake.log

@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	edgeR
+	1	shiny
+	1	tximport
+	4
+
+[Mon May  6 14:22:19 2019]
+rule tximport:
+    input: ../output/Rout/pkginstall_state.txt, ../output/stringtie/shl20190501-001/shl20190501-001.gtf, scripts/run_tximport.R
+    output: ../output/outputR/tximport.rds
+    log: ../output/Rout/tximport.Rout
+    jobid: 14
+    benchmark: ../output/benchmarks/tximport.txt
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 658 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
+Missing files after 5 seconds:
+../output/outputR/tximport.rds
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/log/2019-05-06T142218.629783.snakemake.log

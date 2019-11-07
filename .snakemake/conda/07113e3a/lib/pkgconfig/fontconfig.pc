@@ -1,0 +1,18 @@
+prefix=/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+sysconfdir=${prefix}/etc
+localstatedir=${prefix}/var
+PACKAGE=fontconfig
+confdir=${sysconfdir}/fonts
+cachedir=${localstatedir}/cache/${PACKAGE}
+
+Name: Fontconfig
+Description: Font configuration and customization library
+Version: 2.13.1
+Requires:  freetype2 >= 21.0.15
+Requires.private:  uuid libxml-2.0 >= 2.6
+Libs: -L${libdir} -lfontconfig
+Libs.private:  
+Cflags: -I${includedir}  

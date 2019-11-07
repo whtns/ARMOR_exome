@@ -1,0 +1,340 @@
+{
+  "build": "py36_2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [
+    "pigz",
+    "python >=3.6,<3.7.0a0",
+    "xopen >=0.3.2"
+  ],
+  "extracted_package_dir": "/opt/miniconda3/pkgs/cutadapt-1.16-py36_2",
+  "features": "",
+  "files": [
+    "bin/cutadapt",
+    "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/PKG-INFO",
+    "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/SOURCES.txt",
+    "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/dependency_links.txt",
+    "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/entry_points.txt",
+    "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/installed-files.txt",
+    "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/requires.txt",
+    "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/top_level.txt",
+    "lib/python3.6/site-packages/cutadapt/__init__.py",
+    "lib/python3.6/site-packages/cutadapt/__main__.py",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/__init__.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/__main__.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/_version.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/adapters.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/align.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/colorspace.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/compat.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/filters.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/modifiers.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/pipeline.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/qualtrim.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/report.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/__pycache__/seqio.cpython-36.pyc",
+    "lib/python3.6/site-packages/cutadapt/_align.cpython-36m-x86_64-linux-gnu.so",
+    "lib/python3.6/site-packages/cutadapt/_qualtrim.cpython-36m-x86_64-linux-gnu.so",
+    "lib/python3.6/site-packages/cutadapt/_seqio.cpython-36m-x86_64-linux-gnu.so",
+    "lib/python3.6/site-packages/cutadapt/_version.py",
+    "lib/python3.6/site-packages/cutadapt/adapters.py",
+    "lib/python3.6/site-packages/cutadapt/align.py",
+    "lib/python3.6/site-packages/cutadapt/colorspace.py",
+    "lib/python3.6/site-packages/cutadapt/compat.py",
+    "lib/python3.6/site-packages/cutadapt/filters.py",
+    "lib/python3.6/site-packages/cutadapt/modifiers.py",
+    "lib/python3.6/site-packages/cutadapt/pipeline.py",
+    "lib/python3.6/site-packages/cutadapt/qualtrim.py",
+    "lib/python3.6/site-packages/cutadapt/report.py",
+    "lib/python3.6/site-packages/cutadapt/seqio.py"
+  ],
+  "fn": "cutadapt-1.16-py36_2.tar.bz2",
+  "license": "MIT License",
+  "link": {
+    "source": "/opt/miniconda3/pkgs/cutadapt-1.16-py36_2",
+    "type": 1
+  },
+  "md5": "38bd804b86e887b2048e37499db52a23",
+  "name": "cutadapt",
+  "package_tarball_full_path": "/opt/miniconda3/pkgs/cutadapt-1.16-py36_2.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/cutadapt",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256": "c75da5c1c5a770d3c880c8971d80417951757559cffa41f67f2daeee94371440",
+        "sha256_in_prefix": "86583a9af8f66ad8ec8c246cb82c382a13f3756a56271f231e01a3b27d5d36bd",
+        "size_in_bytes": 411
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/PKG-INFO",
+        "path_type": "hardlink",
+        "sha256": "8a9682bf0fdd49e0838b4df536c5708f33ba6f07f59a08c535013a086854aee4",
+        "sha256_in_prefix": "8a9682bf0fdd49e0838b4df536c5708f33ba6f07f59a08c535013a086854aee4",
+        "size_in_bytes": 2837
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/SOURCES.txt",
+        "path_type": "hardlink",
+        "sha256": "0a0fdd517ca088b7516354e78ca8f78c2a9b680768622fdd36083d1c5cf66a53",
+        "sha256_in_prefix": "0a0fdd517ca088b7516354e78ca8f78c2a9b680768622fdd36083d1c5cf66a53",
+        "size_in_bytes": 5767
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/dependency_links.txt",
+        "path_type": "hardlink",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "sha256_in_prefix": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size_in_bytes": 1
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/entry_points.txt",
+        "path_type": "hardlink",
+        "sha256": "5f7930459c2d8b18666a10b1e133c814b903e6e83c8d531af5cc7c8ca0cb1aec",
+        "sha256_in_prefix": "5f7930459c2d8b18666a10b1e133c814b903e6e83c8d531af5cc7c8ca0cb1aec",
+        "size_in_bytes": 53
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/installed-files.txt",
+        "path_type": "hardlink",
+        "sha256": "2cebd055aefc0a5c4f996743ea22a92bf5bef4900cfdaf740c30011616c80739",
+        "sha256_in_prefix": "2cebd055aefc0a5c4f996743ea22a92bf5bef4900cfdaf740c30011616c80739",
+        "size_in_bytes": 1187
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/requires.txt",
+        "path_type": "hardlink",
+        "sha256": "7958d5c946d5c32af5112221dac27e832be83f85289e0e90352f0c40aaa2565e",
+        "sha256_in_prefix": "7958d5c946d5c32af5112221dac27e832be83f85289e0e90352f0c40aaa2565e",
+        "size_in_bytes": 13
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt-1.16-py3.6.egg-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "e6f87ed134c3837c6d9f344071195c62a2241f0aa1f86c51cee1d96d700dfc28",
+        "sha256_in_prefix": "e6f87ed134c3837c6d9f344071195c62a2241f0aa1f86c51cee1d96d700dfc28",
+        "size_in_bytes": 9
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "8d291e88160e50880a4874988faa07e04428f2724516ad0a6e08e8163e045c63",
+        "sha256_in_prefix": "8d291e88160e50880a4874988faa07e04428f2724516ad0a6e08e8163e045c63",
+        "size_in_bytes": 694
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__main__.py",
+        "path_type": "hardlink",
+        "sha256": "cc6608b77a29242d56f6b197f31f2799946ac8b5bcdb73922668e1556cf56278",
+        "sha256_in_prefix": "cc6608b77a29242d56f6b197f31f2799946ac8b5bcdb73922668e1556cf56278",
+        "size_in_bytes": 33097
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/__init__.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "577d10a070a3010073e332dbb709b8964759e438c3f90a9b4c0c911c5555e5bb",
+        "sha256_in_prefix": "577d10a070a3010073e332dbb709b8964759e438c3f90a9b4c0c911c5555e5bb",
+        "size_in_bytes": 950
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/__main__.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "7bb75bf61b6ca52c372f6121fab636c06e2ecfd509bf1614f4eacf80ed1c992d",
+        "sha256_in_prefix": "7bb75bf61b6ca52c372f6121fab636c06e2ecfd509bf1614f4eacf80ed1c992d",
+        "size_in_bytes": 25354
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/_version.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "0279e117a96b48010f4c8fe749c65202f6b2c8b171b75ae5a9174406b0ed8684",
+        "sha256_in_prefix": "0279e117a96b48010f4c8fe749c65202f6b2c8b171b75ae5a9174406b0ed8684",
+        "size_in_bytes": 428
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/adapters.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "63e8230ba72e654c80ca196c4756df49584d24b665c8c08519141af51d6d7b6d",
+        "sha256_in_prefix": "63e8230ba72e654c80ca196c4756df49584d24b665c8c08519141af51d6d7b6d",
+        "size_in_bytes": 22530
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/align.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "9b31ce9cad129a84ed05743758f7e5e0efa87904c84e4751e9d57565c7e65216",
+        "sha256_in_prefix": "9b31ce9cad129a84ed05743758f7e5e0efa87904c84e4751e9d57565c7e65216",
+        "size_in_bytes": 943
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/colorspace.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "c84bb2b57f1702486095ea507fb2357418e5153c46a2e0b6a0dc695f7a7f9def",
+        "sha256_in_prefix": "c84bb2b57f1702486095ea507fb2357418e5153c46a2e0b6a0dc695f7a7f9def",
+        "size_in_bytes": 1836
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/compat.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "a54ccc2591e183dbf580f839e5d34c5915ab2222c813af6e3473aadd4d945f07",
+        "sha256_in_prefix": "a54ccc2591e183dbf580f839e5d34c5915ab2222c813af6e3473aadd4d945f07",
+        "size_in_bytes": 1271
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/filters.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "337d5042d2c2bb2f8bf3799b1cdc9e0dfc819ac2cb9dccf989afb89807d2f9dd",
+        "sha256_in_prefix": "337d5042d2c2bb2f8bf3799b1cdc9e0dfc819ac2cb9dccf989afb89807d2f9dd",
+        "size_in_bytes": 12295
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/modifiers.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "0d9bef3f5b4c200dd2d888a835efbbb6999dd8d85ea4a03c558c94a0992ba083",
+        "sha256_in_prefix": "0d9bef3f5b4c200dd2d888a835efbbb6999dd8d85ea4a03c558c94a0992ba083",
+        "size_in_bytes": 9281
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/pipeline.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "0bced4bdd514585cc606f3927b02627165be2de5e0dcaebf6ea8a7f25e41009d",
+        "sha256_in_prefix": "0bced4bdd514585cc606f3927b02627165be2de5e0dcaebf6ea8a7f25e41009d",
+        "size_in_bytes": 19929
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/qualtrim.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "5715041241f08215177d001c80debab87afcb21057c588cff46b31eb180f5cae",
+        "sha256_in_prefix": "5715041241f08215177d001c80debab87afcb21057c588cff46b31eb180f5cae",
+        "size_in_bytes": 1238
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/report.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "4afa7c06e9d2e20a1d1a3ee1623204a1caa9d6c58e5398a0f79e77a0ac373612",
+        "sha256_in_prefix": "4afa7c06e9d2e20a1d1a3ee1623204a1caa9d6c58e5398a0f79e77a0ac373612",
+        "size_in_bytes": 12040
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/__pycache__/seqio.cpython-36.pyc",
+        "path_type": "hardlink",
+        "sha256": "5697a015682b80f243823c00650f8cc018e1774e2b692e3991b7edfbee69fefa",
+        "sha256_in_prefix": "5697a015682b80f243823c00650f8cc018e1774e2b692e3991b7edfbee69fefa",
+        "size_in_bytes": 29764
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/_align.cpython-36m-x86_64-linux-gnu.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/cutadapt_1529975618779/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+        "sha256": "b788fe5303fdbb80205554d2f60e1bfcd29ea6f0f9e25f43189e67bb100f642c",
+        "sha256_in_prefix": "602810c677979794c70743a65e890582f2d63f4b04f74788aafca08d6f37bcf2",
+        "size_in_bytes": 709377
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/_qualtrim.cpython-36m-x86_64-linux-gnu.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/cutadapt_1529975618779/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+        "sha256": "d851715652a816d9c111b4a14ae2afe53e140c5802e232fddebc6911ab11b7fd",
+        "sha256_in_prefix": "94b0fd9134fb6a3f5c125902c11da434ec1e237396c87818589ed63bf2ccaaea",
+        "size_in_bytes": 119575
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/_seqio.cpython-36m-x86_64-linux-gnu.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/cutadapt_1529975618779/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+        "sha256": "09503d9638cced47a394ec1ef8bf12d38eae1d17f29105bdc5c2c410ffa68e68",
+        "sha256_in_prefix": "d316a0f5db674d79e38bb389c2b88c99c75fc321d3f5c02ba12d53294d3ccb4d",
+        "size_in_bytes": 710478
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/_version.py",
+        "path_type": "hardlink",
+        "sha256": "0853e989c0a37605d621dd30839f09c374a4865d1881aa22c735512ef3ce1cc3",
+        "sha256_in_prefix": "0853e989c0a37605d621dd30839f09c374a4865d1881aa22c735512ef3ce1cc3",
+        "size_in_bytes": 470
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/adapters.py",
+        "path_type": "hardlink",
+        "sha256": "13007be09f20fd83d9288a5d891e29d6ec3c57978abe18783c66d0edf1b6704d",
+        "sha256_in_prefix": "13007be09f20fd83d9288a5d891e29d6ec3c57978abe18783c66d0edf1b6704d",
+        "size_in_bytes": 24798
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/align.py",
+        "path_type": "hardlink",
+        "sha256": "b1bedf00edf58e4260ab8c52af9c82e37f8d4f9a5562662afa7942996fe9bfb7",
+        "sha256_in_prefix": "b1bedf00edf58e4260ab8c52af9c82e37f8d4f9a5562662afa7942996fe9bfb7",
+        "size_in_bytes": 1145
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/colorspace.py",
+        "path_type": "hardlink",
+        "sha256": "cb9f816c4516b266172593a423ec44d8ab1383020b690a79bbf919479d415e8d",
+        "sha256_in_prefix": "cb9f816c4516b266172593a423ec44d8ab1383020b690a79bbf919479d415e8d",
+        "size_in_bytes": 1617
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/compat.py",
+        "path_type": "hardlink",
+        "sha256": "0436c5ec9f84980528a290a8207139d6b5c4e71b781a31ba0718359eb2be39fb",
+        "sha256_in_prefix": "0436c5ec9f84980528a290a8207139d6b5c4e71b781a31ba0718359eb2be39fb",
+        "size_in_bytes": 724
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/filters.py",
+        "path_type": "hardlink",
+        "sha256": "8b61a73e535ab11338f3633e4a1b35a4ee1611768916c7438fe828c02bb9eda0",
+        "sha256_in_prefix": "8b61a73e535ab11338f3633e4a1b35a4ee1611768916c7438fe828c02bb9eda0",
+        "size_in_bytes": 9420
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/modifiers.py",
+        "path_type": "hardlink",
+        "sha256": "80a294e4ebd0abbec51c8c8c8303ddcafd6e9156f57fa4ec1ad774f62892c1ba",
+        "sha256_in_prefix": "80a294e4ebd0abbec51c8c8c8303ddcafd6e9156f57fa4ec1ad774f62892c1ba",
+        "size_in_bytes": 7116
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/pipeline.py",
+        "path_type": "hardlink",
+        "sha256": "0720960f664e65b81107055e86d0f470832f2529fd68f5592aeeab94baf4e00e",
+        "sha256_in_prefix": "0720960f664e65b81107055e86d0f470832f2529fd68f5592aeeab94baf4e00e",
+        "size_in_bytes": 21031
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/qualtrim.py",
+        "path_type": "hardlink",
+        "sha256": "6aa070560bff4a5ada5b077f42bff37e640b9cf697c1e597ec59b2547190f50d",
+        "sha256_in_prefix": "6aa070560bff4a5ada5b077f42bff37e640b9cf697c1e597ec59b2547190f50d",
+        "size_in_bytes": 1058
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/report.py",
+        "path_type": "hardlink",
+        "sha256": "12cf0bd322cf9b7febe0901d8cc9ec43353c7dd6410d65a23f0674096c3c8c01",
+        "sha256_in_prefix": "12cf0bd322cf9b7febe0901d8cc9ec43353c7dd6410d65a23f0674096c3c8c01",
+        "size_in_bytes": 13047
+      },
+      {
+        "_path": "lib/python3.6/site-packages/cutadapt/seqio.py",
+        "path_type": "hardlink",
+        "sha256": "4b18ef3d5a73aed19ac0acdb130b3e67f069c7925444233964f9f74512734d2e",
+        "sha256_in_prefix": "4b18ef3d5a73aed19ac0acdb130b3e67f069c7925444233964f9f74512734d2e",
+        "size_in_bytes": 27756
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "cutadapt=1.16",
+  "size": 581407,
+  "subdir": "linux-64",
+  "timestamp": 1529975670443,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/bioconda/linux-64/cutadapt-1.16-py36_2.tar.bz2",
+  "version": "1.16"
+}

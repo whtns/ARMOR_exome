@@ -1,0 +1,222 @@
+Building DAG of jobs...
+Creating conda environment envs/environment.yaml...
+Downloading remote packages.
+Environment for envs/environment.yaml created (location: .snakemake/conda/07113e3a)
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	bamindex
+	1	bigwig
+	1	edgeR
+	2	fastqc
+	2	fastqctrimmed
+	1	linkedtxome
+	1	multiqc
+	1	pkginstall
+	1	salmonPE
+	1	shiny
+	1	starPE
+	1	trimgalorePE
+	1	tximeta
+	16
+
+[Sun May  5 12:20:20 2019]
+rule pkginstall:
+    input: scripts/install_pkgs.R
+    output: ../output/Rout/pkginstall_state.txt
+    log: ../output/Rout/install_pkgs.Rout
+    jobid: 10
+    benchmark: ../output/benchmarks/install_pkgs.txt
+    priority: 50
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:20:26 2019]
+Finished job 10.
+1 of 16 steps (6%) done
+
+[Sun May  5 12:20:26 2019]
+rule linkedtxome:
+    input: /dataVolume/storage/Homo_sapiens/grch38/txome/Homo_sapiens.GRCh38.cdna.all.fa.gz, /dataVolume/storage/Homo_sapiens/grch38_tran/Homo_sapiens.GRCh38.87.gtf, /dataVolume/storage/Homo_sapiens/grch38/SalmonIndex/Homo_sapiens.GRCh38.9870.8.2/hash.bin, scripts/generate_linkedtxome.R, ../output/Rout/pkginstall_state.txt
+    output: /dataVolume/storage/Homo_sapiens/grch38/SalmonIndex/Homo_sapiens.GRCh38.9870.8.2.json
+    log: ../output/Rout/generate_linkedtxome.Rout
+    jobid: 17
+    benchmark: ../output/benchmarks/generate_linkedtxome.txt
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:20:31 2019]
+Finished job 17.
+2 of 16 steps (12%) done
+
+[Sun May  5 12:20:31 2019]
+rule trimgalorePE:
+    input: ../data/FASTQ/shl20190501-01_R1.fastq.gz, ../data/FASTQ/shl20190501-01_R2.fastq.gz
+    output: ../output/FASTQtrimmed/shl20190501-01_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-01_R2_val_2.fq.gz
+    log: ../output/logs/trimgalore_shl20190501-01.log
+    jobid: 6
+    benchmark: ../output/benchmarks/trimgalore_shl20190501-01.txt
+    wildcards: sample=shl20190501-01
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:27:29 2019]
+Finished job 6.
+3 of 16 steps (19%) done
+
+[Sun May  5 12:27:29 2019]
+rule starPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/SA, ../output/FASTQtrimmed/shl20190501-01_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-01_R2_val_2.fq.gz
+    output: ../output/STAR/shl20190501-01/shl20190501-01_Aligned.sortedByCoord.out.bam
+    log: ../output/logs/STAR_shl20190501-01.log
+    jobid: 14
+    benchmark: ../output/benchmarks/STAR_shl20190501-01.txt
+    wildcards: sample=shl20190501-01
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:36:37 2019]
+Finished job 14.
+4 of 16 steps (25%) done
+
+[Sun May  5 12:36:37 2019]
+rule salmonPE:
+    input: /dataVolume/storage/Homo_sapiens/grch38/SalmonIndex/Homo_sapiens.GRCh38.9870.8.2/hash.bin, ../output/FASTQtrimmed/shl20190501-01_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-01_R2_val_2.fq.gz
+    output: ../output/salmon/shl20190501-01/quant.sf
+    log: ../output/logs/salmon_shl20190501-01.log
+    jobid: 5
+    benchmark: ../output/benchmarks/salmon_shl20190501-01.txt
+    wildcards: sample=shl20190501-01
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:43:16 2019]
+Finished job 5.
+5 of 16 steps (31%) done
+
+[Sun May  5 12:43:16 2019]
+rule tximeta:
+    input: ../output/Rout/pkginstall_state.txt, ../output/salmon/shl20190501-01/quant.sf, ../data/metadata.txt, /dataVolume/storage/Homo_sapiens/grch38/SalmonIndex/Homo_sapiens.GRCh38.9870.8.2/hash.bin, /dataVolume/storage/Homo_sapiens/grch38/SalmonIndex/Homo_sapiens.GRCh38.9870.8.2.json, scripts/run_tximeta.R
+    output: ../output/outputR/tximeta_se.rds
+    log: ../output/Rout/tximeta_se.Rout
+    jobid: 16
+    benchmark: ../output/benchmarks/tximeta_se.txt
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:44:22 2019]
+Finished job 16.
+6 of 16 steps (38%) done
+
+[Sun May  5 12:44:22 2019]
+rule bigwig:
+    input: ../output/STAR/shl20190501-01/shl20190501-01_Aligned.sortedByCoord.out.bam, /dataVolume/storage/Homo_sapiens/grch38/STARIndex/Homo_sapiens.GRCh38.87.STAR.idx/chrNameLength.txt
+    output: ../output/STARbigwig/shl20190501-01_Aligned.sortedByCoord.out.bw
+    log: ../output/logs/bigwig_shl20190501-01.log
+    jobid: 11
+    benchmark: ../output/benchmarks/bigwig_shl20190501-01.txt
+    wildcards: sample=shl20190501-01
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:46:06 2019]
+Finished job 11.
+7 of 16 steps (44%) done
+
+[Sun May  5 12:46:06 2019]
+rule bamindex:
+    input: ../output/STAR/shl20190501-01/shl20190501-01_Aligned.sortedByCoord.out.bam
+    output: ../output/STAR/shl20190501-01/shl20190501-01_Aligned.sortedByCoord.out.bam.bai
+    log: ../output/logs/samtools_index_shl20190501-01.log
+    jobid: 9
+    benchmark: ../output/benchmarks/samtools_index_shl20190501-01.txt
+    wildcards: sample=shl20190501-01
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:46:13 2019]
+Finished job 9.
+8 of 16 steps (50%) done
+
+[Sun May  5 12:46:13 2019]
+rule fastqc:
+    input: ../data/FASTQ/shl20190501-01_R1.fastq.gz
+    output: ../output/FastQC/shl20190501-01_R1_fastqc.zip
+    log: ../output/logs/fastqc_shl20190501-01_R1.log
+    jobid: 3
+    benchmark: ../output/benchmarks/fastqc_shl20190501-01_R1.txt
+    wildcards: sample=shl20190501-01_R1
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:47:02 2019]
+Finished job 3.
+9 of 16 steps (56%) done
+
+[Sun May  5 12:47:02 2019]
+rule fastqc:
+    input: ../data/FASTQ/shl20190501-01_R2.fastq.gz
+    output: ../output/FastQC/shl20190501-01_R2_fastqc.zip
+    log: ../output/logs/fastqc_shl20190501-01_R2.log
+    jobid: 4
+    benchmark: ../output/benchmarks/fastqc_shl20190501-01_R2.txt
+    wildcards: sample=shl20190501-01_R2
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:47:50 2019]
+Finished job 4.
+10 of 16 steps (62%) done
+
+[Sun May  5 12:47:50 2019]
+rule fastqctrimmed:
+    input: ../output/FASTQtrimmed/shl20190501-01_R1_val_1.fq.gz
+    output: ../output/FastQC/shl20190501-01_R1_val_1_fastqc.zip
+    log: ../output/logs/fastqc_trimmed_shl20190501-01_R1_val_1.log
+    jobid: 7
+    benchmark: ../output/benchmarks/fastqc_trimmed_shl20190501-01_R1_val_1.txt
+    wildcards: sample=shl20190501-01_R1_val_1
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:48:34 2019]
+Finished job 7.
+11 of 16 steps (69%) done
+
+[Sun May  5 12:48:34 2019]
+rule fastqctrimmed:
+    input: ../output/FASTQtrimmed/shl20190501-01_R2_val_2.fq.gz
+    output: ../output/FastQC/shl20190501-01_R2_val_2_fastqc.zip
+    log: ../output/logs/fastqc_trimmed_shl20190501-01_R2_val_2.log
+    jobid: 8
+    benchmark: ../output/benchmarks/fastqc_trimmed_shl20190501-01_R2_val_2.txt
+    wildcards: sample=shl20190501-01_R2_val_2
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:49:19 2019]
+Finished job 8.
+12 of 16 steps (75%) done
+
+[Sun May  5 12:49:19 2019]
+rule multiqc:
+    input: ../output/FastQC/shl20190501-01_R1_fastqc.zip, ../output/FastQC/shl20190501-01_R2_fastqc.zip, ../output/salmon/shl20190501-01/quant.sf, ../output/FASTQtrimmed/shl20190501-01_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-01_R2_val_2.fq.gz, ../output/FastQC/shl20190501-01_R1_val_1_fastqc.zip, ../output/FastQC/shl20190501-01_R2_val_2_fastqc.zip, ../output/STAR/shl20190501-01/shl20190501-01_Aligned.sortedByCoord.out.bam.bai
+    output: ../output/MultiQC/multiqc_report.html
+    log: ../output/logs/multiqc.log
+    jobid: 1
+    benchmark: ../output/benchmarks/multiqc.txt
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Sun May  5 12:49:32 2019]
+Finished job 1.
+13 of 16 steps (81%) done
+
+[Sun May  5 12:49:32 2019]
+rule edgeR:
+    input: ../output/Rout/pkginstall_state.txt, ../output/outputR/tximeta_se.rds, scripts/run_render.R, scripts/edgeR_dge.Rmd
+    output: ../output/outputR/edgeR_dge.html, ../output/outputR/edgeR_dge.rds
+    log: ../output/Rout/run_dge_edgeR.Rout
+    jobid: 12
+    benchmark: ../output/benchmarks/run_dge_edgeR.txt
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 581 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
+Missing files after 5 seconds:
+../output/outputR/edgeR_dge.html
+../output/outputR/edgeR_dge.rds
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/log/2019-05-05T121909.845078.snakemake.log

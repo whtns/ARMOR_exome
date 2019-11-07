@@ -7,7 +7,7 @@ if len(config) == 0:
     sys.exit("Make sure there is a config.yaml file in " + os.getcwd() + " or specify one with the --configfile commandline parameter.")
 
 ## Make sure that all expected variables from the config file are in the config dictionary
-configvars = ['annotation', 'organism', 'build', 'release', 'txome', 'genome', 'gtf', 'salmonindex', 'salmonk', 'STARindex', 'readlength', 'fldMean', 'fldSD', 'metatxt', 'design', 'contrast', 'genesets', 'ncores', 'FASTQ', 'fqext1', 'fqext2', 'fqsuffix', 'output', 'useCondaR', 'Rbin', 'run_trimming', 'run_STAR', 'run_DRIMSeq', 'run_camera']
+configvars = ['annotation', 'organism', 'build', 'release', 'txome', 'genome', 'gtf', 'salmonindex', 'salmonk', 'STARindex', 'HISAT2index', 'readlength', 'fldMean', 'fldSD', 'metatxt', 'design', 'contrast', 'genesets', 'ncores', 'FASTQ', 'fqext1', 'fqext2', 'fqsuffix', 'output', 'useCondaR', 'Rbin', 'run_trimming', 'run_STAR', 'run_HISAT2', 'run_DRIMSeq', 'run_camera']
 for k in configvars:
 	if k not in config:
 		config[k] = None
@@ -22,6 +22,7 @@ config['txome'] = sanitizefile(config['txome'])
 config['gtf'] = sanitizefile(config['gtf'])
 config['genome'] = sanitizefile(config['genome'])
 config['STARindex'] = sanitizefile(config['STARindex'])
+config['HISAT2index'] = sanitizefile(config['HISAT2index'])
 config['salmonindex'] = sanitizefile(config['salmonindex'])
 config['metatxt'] = sanitizefile(config['metatxt'])
 
@@ -60,6 +61,12 @@ else:
 ## Define the R binary
 Rbin = config["Rbin"]
 
+# The config.yaml files determines which steps should be performed
+def stringtie_output(wildcards):
+	input = []
+	input.extend(expand(outputdir + "stringtie/{sample}/{sample}.gtf", sample = samples.names[samples.type == 'PE'].values.tolist()))
+	return input
+
 ## ------------------------------------------------------------------------------------ ##
 ## Target definitions
 ## ------------------------------------------------------------------------------------ ##
@@ -67,7 +74,8 @@ Rbin = config["Rbin"]
 rule all:
 	input:
 		outputdir + "MultiQC/multiqc_report.html",
-		outputdir + "outputR/shiny_sce.rds"
+		outputdir + "seurat/unfiltered_seu.rds",
+		stringtie_output
 
 rule setup:
 	input:
@@ -119,6 +127,12 @@ rule runstar:
 	input:
 		expand(outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()),
 		expand(outputdir + "STARbigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist())
+		
+## HISAT2 alignment
+rule runhisat2:
+	input:
+		expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()),
+		expand(outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist())
 
 ## List all the packages that were used by the R analyses
 rule listpackages:
@@ -143,7 +157,7 @@ rule softwareversions:
 		"echo -n 'ARMOR version ' && cat version; "
 		"salmon --version; trim_galore --version; "
 		"echo -n 'cutadapt ' && cutadapt --version; "
-		"fastqc --version; STAR --version; samtools --version; multiqc --version; "
+		"fastqc --version; STAR --version; hisat2 --version; samtools --version; multiqc --version; "
 		"bedtools --version"
 
 ## ------------------------------------------------------------------------------------ ##
@@ -276,7 +290,8 @@ def multiqc_input(wildcards):
 	input.extend(expand(outputdir + "FastQC/{sample}_fastqc.zip", sample = samples.names[samples.type == 'SE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext1"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext2"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
-	input.extend(expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist()))
+	if config["run_SALMON"]:
+		input.extend(expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist()))
 	if config["run_trimming"]:
 		input.extend(expand(outputdir + "FASTQtrimmed/{sample}_trimmed.fq.gz", sample = samples.names[samples.type == 'SE'].values.tolist()))
 		input.extend(expand(outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext1"]) + "_val_1.fq.gz", sample = samples.names[samples.type == 'PE'].values.tolist()))
@@ -286,16 +301,21 @@ def multiqc_input(wildcards):
 		input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext2"]) + "_val_2_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	if config["run_STAR"]:
 		input.extend(expand(outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()))
+	if config["run_HISAT2"]:
+		input.extend(expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()))
 	return input
 
 ## Determine the input directories for MultiQC depending on the config file
 def multiqc_params(wildcards):
-	param = [outputdir + "FastQC",
-	outputdir + "salmon"]
+	param = [outputdir + "FastQC"]
+	if config["run_SALMON"]:
+		param.append(outputdir + "salmon")
 	if config["run_trimming"]:
 		param.append(outputdir + "FASTQtrimmed")
 	if config["run_STAR"]:
 		param.append(outputdir + "STAR")
+	if config["run_HISAT2"]:
+		param.append(outputdir + "HISAT2")
 	return param
 
 ## MultiQC
@@ -358,6 +378,109 @@ rule trimgalorePE:
 		"echo 'TrimGalore! version:\n' > {log}; trim_galore --version >> {log}; "
 		"trim_galore -q 20 --phred33 --length 20 -o {params.FASTQtrimmeddir} --path_to_cutadapt cutadapt "
 		"--paired {input.fastq1} {input.fastq2}"
+
+## ------------------------------------------------------------------------------------ ##
+## HISAT2 mapping
+## ------------------------------------------------------------------------------------ ##
+## Genome mapping with HISAT2
+rule HISAT2PE:
+	input:
+		fastq1 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext1"]) + "_val_1.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext1"]) + "." + str(config["fqsuffix"]) + ".gz",
+		fastq2 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext2"]) + "_val_2.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext2"]) + "." + str(config["fqsuffix"]) + ".gz"
+	output:
+		bam = temp(outputdir + "HISAT2/{sample}/{sample}_Aligned.out.bam")
+	threads:
+		config["ncores"]
+	log:
+		outputdir + "logs/HISAT2_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/HISAT2_{sample}.txt"
+	params:
+		HISAT2index = config["HISAT2index"],
+		HISAT2dir = outputdir + "HISAT2"
+	conda:
+		"envs/environment.yaml"
+	shell:
+		"echo 'hisat2 --version:\n' > {log}; hisat2 --version >> {log}; "
+		"hisat2 --new-summary --pen-noncansplice 20 --threads {threads} --mp 1,0 --sp 3,1 -x {params.HISAT2index} -1 {input.fastq1} -2 {input.fastq2} | samtools view -Sbo {output.bam} -"
+
+# convert and sort sam files
+rule bamsort:
+	input:
+		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.out.bam"
+	output:
+		sorted_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+	log:
+		outputdir + "logs/samtools_sort_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/samtools_sort_{sample}.txt"
+	conda:
+		"envs/environment.yaml"
+	shell:
+		"echo 'samtools version:\n' > {log}; samtools --version >> {log}; "
+		"samtools sort -O bam -o {output.sorted_bam} {input.bam}"
+
+## Index bam files
+rule bamindexhisat2:
+	input:
+		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+	output:
+		outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai"
+	log:
+		outputdir + "logs/samtools_index_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/samtools_index_{sample}.txt"
+	conda:
+		"envs/environment.yaml"
+	shell:
+		"echo 'samtools version:\n' > {log}; samtools --version >> {log}; "
+		"samtools index {input.bam}"
+
+## Convert BAM files to bigWig
+rule bigwighisat2:
+	input:
+		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam",
+		chrl = os.path.dirname(config["HISAT2index"]) + "/chrNameLength.txt"
+	output:
+		outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw"
+	params:
+		HISAT2bigwigdir = outputdir + "HISAT2bigwig"
+	log:
+		outputdir + "logs/bigwig_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/bigwig_{sample}.txt"
+	conda:
+		"envs/environment.yaml"
+	shell:
+		"echo 'bedtools version:\n' > {log}; bedtools --version >> {log}; "
+		"bedtools genomecov -split -ibam {input.bam} -bg | LC_COLLATE=C sort -k1,1 -k2,2n > "
+		"{params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph; "
+		"bedGraphToBigWig {params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph "
+		"{input.chrl} {output}; rm -f {params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph"
+
+## ------------------------------------------------------------------------------------ ##
+## Stringtie
+## ------------------------------------------------------------------------------------ ##
+# Transcript assembly using StringTie
+rule stringtie:
+	input:
+		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+	output:
+		gtf = temp(outputdir + "stringtie/{sample}/{sample}.gtf")
+	log:
+		outputdir + "logs/stringtie_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/stringtie_{sample}.txt"
+	threads:
+		config["ncores"]
+	params:
+		stringtiegtf = config["gtf"],
+		stringtiedir = outputdir + "stringtie"
+	conda:
+		"envs/environment.yaml"
+	shell:
+		"echo 'stringtie version:\n' > {log}; stringtie --version >> {log}; "
+		"stringtie {input.bam} -G {params.stringtiegtf} -x MT -eB -o {output.gtf}"
 
 ## ------------------------------------------------------------------------------------ ##
 ## Salmon abundance estimation
@@ -506,21 +629,22 @@ rule bigwig:
 ## ------------------------------------------------------------------------------------ ##
 ## Transcript quantification
 ## ------------------------------------------------------------------------------------ ##
+
 ## tximeta
 rule tximeta:
 	input:
-	    outputdir + "Rout/pkginstall_state.txt",
+	  outputdir + "Rout/pkginstall_state.txt",
 		expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist()),
 		metatxt = config["metatxt"],
 		salmonidx = config["salmonindex"] + "/hash.bin",
 		json = config["salmonindex"] + ".json",
 		script = "scripts/run_tximeta.R"
 	output:
-		outputdir + "outputR/tximeta_se.rds"
+		outputdir + "outputR/tximeta.rds"
 	log:
-		outputdir + "Rout/tximeta_se.Rout"
+		outputdir + "Rout/tximeta.Rout"
 	benchmark:
-		outputdir + "benchmarks/tximeta_se.txt"
+		outputdir + "benchmarks/tximeta.txt"
 	params:
 		salmondir = outputdir + "salmon",
 		flag = config["annotation"],
@@ -529,6 +653,27 @@ rule tximeta:
 		Renv
 	shell:
 		'''{Rbin} CMD BATCH --no-restore --no-save "--args salmondir='{params.salmondir}' json='{input.json}' metafile='{input.metatxt}' outrds='{output}' annotation='{params.flag}' organism='{params.organism}'" {input.script} {log}'''
+
+## tximport
+rule tximport:
+	input:
+	  outputdir + "Rout/pkginstall_state.txt",
+		expand(outputdir + "stringtie/{sample}/{sample}.gtf", sample = samples.names.values.tolist()),
+		script = "scripts/run_tximport.R"
+	output:
+		outputdir + "seurat/unfiltered_seu.rds"
+	log:
+		outputdir + "Rout/tximport.Rout"
+	benchmark:
+		outputdir + "benchmarks/tximport.txt"
+	params:
+		stringtiedir = outputdir + "stringtie",
+		proj_dir = config["proj_dir"]
+	conda:
+		Renv
+	shell:
+		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{params.proj_dir}' outrds='{output}'" {input.script} {log}'''
+
 
 ## ------------------------------------------------------------------------------------ ##
 ## Input variable check
@@ -581,7 +726,7 @@ rule checkinputs:
 rule edgeR:
 	input:
 		outputdir + "Rout/pkginstall_state.txt",
-		rds = outputdir + "outputR/tximeta_se.rds",
+		rds = outputdir + "seurat/unfiltered_seu.rds",
 		script = "scripts/run_render.R",
 		template = "scripts/edgeR_dge.Rmd"
 	output:
@@ -639,12 +784,16 @@ def shiny_input(wildcards):
 	input = [outputdir + "Rout/pkginstall_state.txt"]
 	if config["run_STAR"]:
 		input.extend(expand(outputdir + "STARbigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist()))
+	if config["run_HISAT2"]:
+		input.extend(expand(outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist()))
 	return input
 
 def shiny_params(wildcards):
 	param = ["outputdir='" + outputdir + "outputR'"]
 	if config["run_STAR"]:
 		param.append("bigwigdir='" + outputdir + "STARbigwig'")
+	if config["run_HISAT2"]:
+		param.append("bigwigdir='" + outputdir + "HISAT2bigwig'")
 	return param
 
 ## shiny

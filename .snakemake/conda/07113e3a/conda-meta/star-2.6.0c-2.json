@@ -1,0 +1,48 @@
+{
+  "build": "2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [],
+  "extracted_package_dir": "/opt/miniconda3/pkgs/star-2.6.0c-2",
+  "features": "",
+  "files": [
+    "bin/STAR",
+    "bin/STARlong"
+  ],
+  "fn": "star-2.6.0c-2.tar.bz2",
+  "license": "GPLv3",
+  "link": {
+    "source": "/opt/miniconda3/pkgs/star-2.6.0c-2",
+    "type": 1
+  },
+  "md5": "08ee062e2f161e23560fcc3b8f898312",
+  "name": "star",
+  "package_tarball_full_path": "/opt/miniconda3/pkgs/star-2.6.0c-2.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/STAR",
+        "path_type": "hardlink",
+        "sha256": "6ce0a96f4e6a8e8c327375c969f85bc613cdc7470f898eb0fe4fcf391307f81b",
+        "sha256_in_prefix": "6ce0a96f4e6a8e8c327375c969f85bc613cdc7470f898eb0fe4fcf391307f81b",
+        "size_in_bytes": 8805023
+      },
+      {
+        "_path": "bin/STARlong",
+        "path_type": "hardlink",
+        "sha256": "51a7a96dabec1c36c76290ddd9041bdab9322719b81e3203614f90c96a039b21",
+        "sha256_in_prefix": "51a7a96dabec1c36c76290ddd9041bdab9322719b81e3203614f90c96a039b21",
+        "size_in_bytes": 8800927
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "star=2.6.0c",
+  "size": 6032473,
+  "subdir": "linux-64",
+  "timestamp": 1552121394664,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/bioconda/linux-64/star-2.6.0c-2.tar.bz2",
+  "version": "2.6.0c"
+}

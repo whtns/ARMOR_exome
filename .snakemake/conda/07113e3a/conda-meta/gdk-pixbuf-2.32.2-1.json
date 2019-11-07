@@ -1,0 +1,1157 @@
+{
+  "build": "1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [
+    "glib >=2.48.0",
+    "gobject-introspection",
+    "libffi",
+    "libgcc",
+    "libpng",
+    "libtiff"
+  ],
+  "extracted_package_dir": "/opt/miniconda3/pkgs/gdk-pixbuf-2.32.2-1",
+  "features": "",
+  "files": [
+    "bin/gdk-pixbuf-csource",
+    "bin/gdk-pixbuf-pixdata",
+    "bin/gdk-pixbuf-query-loaders",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-animation.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-autocleanups.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-core.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-enum-types.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-features.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-io.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-loader.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-marshal.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-simple-anim.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-transform.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf.h",
+    "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixdata.h",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders.cache",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ani.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ani.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-bmp.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-bmp.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-icns.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-icns.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ico.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ico.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jpeg.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jpeg.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-pnm.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-pnm.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-qtif.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-qtif.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tga.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tga.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tiff.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tiff.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xbm.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xbm.so",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xpm.la",
+    "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xpm.so",
+    "lib/girepository-1.0/GdkPixbuf-2.0.typelib",
+    "lib/libgdk_pixbuf-2.0.la",
+    "lib/libgdk_pixbuf-2.0.so",
+    "lib/libgdk_pixbuf-2.0.so.0",
+    "lib/libgdk_pixbuf-2.0.so.0.3200.2",
+    "lib/pkgconfig/gdk-pixbuf-2.0.pc",
+    "lib64/lib",
+    "share/gir-1.0/GdkPixbuf-2.0.gir",
+    "share/gtk-doc/html/gdk-pixbuf/GdkPixbufLoader.html",
+    "share/gtk-doc/html/gdk-pixbuf/annotation-glossary.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-12.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-14.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-2.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-26.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-28.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-30.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-32.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-4.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-6.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-2-8.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-deprecated.html",
+    "share/gtk-doc/html/gdk-pixbuf/api-index-full.html",
+    "share/gtk-doc/html/gdk-pixbuf/composite.png",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Animations.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-File-Loading.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-File-saving.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Image-Data-in-Memory.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Inline-data.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Module-Interface.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Reference-Counting-and-Memory-Mangement.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Scaling.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-The-GdkPixbuf-Structure.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Utilities.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Versioning.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-X-Drawables-to-Pixbufs.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Xlib-Rendering.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-XlibRGB.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-csource.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-gdk-pixbuf-Xlib-initialization.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-gdk-pixbuf-from-drawables.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-gdk-pixbuf-rendering.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-query-loaders.html",
+    "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf.devhelp2",
+    "share/gtk-doc/html/gdk-pixbuf/home.png",
+    "share/gtk-doc/html/gdk-pixbuf/index.html",
+    "share/gtk-doc/html/gdk-pixbuf/left-insensitive.png",
+    "share/gtk-doc/html/gdk-pixbuf/left.png",
+    "share/gtk-doc/html/gdk-pixbuf/license.html",
+    "share/gtk-doc/html/gdk-pixbuf/right-insensitive.png",
+    "share/gtk-doc/html/gdk-pixbuf/right.png",
+    "share/gtk-doc/html/gdk-pixbuf/rn01.html",
+    "share/gtk-doc/html/gdk-pixbuf/rn02.html",
+    "share/gtk-doc/html/gdk-pixbuf/style.css",
+    "share/gtk-doc/html/gdk-pixbuf/up-insensitive.png",
+    "share/gtk-doc/html/gdk-pixbuf/up.png",
+    "share/locale/af/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ang/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ar/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/as/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ast/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/az/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/be/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/be@latin/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/bg/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/bn/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/bn_IN/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/br/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/bs/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ca/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ca@valencia/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/crh/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/cs/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/csb/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/cy/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/da/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/de/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/dz/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/el/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/en@shaw/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/en_CA/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/en_GB/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/eo/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/es/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/et/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/eu/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/fa/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/fi/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/fr/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ga/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/gl/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/gu/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/he/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/hi/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/hr/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/hu/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/hy/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ia/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/id/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/io/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/is/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/it/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ja/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ka/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/kk/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/km/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/kn/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ko/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ku/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/li/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/lt/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/lv/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/mai/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/mi/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/mk/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ml/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/mn/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/mr/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ms/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/my/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/nb/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/nds/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ne/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/nl/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/nn/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/nso/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/oc/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/or/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/pa/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/pl/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ps/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/pt/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/pt_BR/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ro/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ru/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/si/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/sk/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/sl/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/sq/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/sr/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/sr@ije/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/sr@latin/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/sv/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ta/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/te/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/tg/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/th/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/tk/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/tr/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/tt/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/ug/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/uk/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/uz/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/uz@cyrillic/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/vi/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/wa/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/xh/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/yi/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/zh_CN/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/zh_HK/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/locale/zh_TW/LC_MESSAGES/gdk-pixbuf.mo",
+    "share/man/man1/gdk-pixbuf-csource.1",
+    "share/man/man1/gdk-pixbuf-query-loaders.1"
+  ],
+  "fn": "gdk-pixbuf-2.32.2-1.tar.bz2",
+  "license": "GNU",
+  "link": {
+    "source": "/opt/miniconda3/pkgs/gdk-pixbuf-2.32.2-1",
+    "type": 1
+  },
+  "md5": "941004461075f0ea6f903a82bbac4e0b",
+  "name": "gdk-pixbuf",
+  "package_tarball_full_path": "/opt/miniconda3/pkgs/gdk-pixbuf-2.32.2-1.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/gdk-pixbuf-csource",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "853a6e78659c93e7050591c4b55d8d5c2fc6d994434d422bffe185d44514ee90"
+      },
+      {
+        "_path": "bin/gdk-pixbuf-pixdata",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "072e5e7c4584bc39720c3b726b4cdd77ac3e0a73a3719c47515449a78564d6ca"
+      },
+      {
+        "_path": "bin/gdk-pixbuf-query-loaders",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "91e9e6ae36c03ade47f5e59fafa37cd801228677ddae184280aa0e600dc9bbb7"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-animation.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-autocleanups.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-core.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-enum-types.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-features.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-io.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-loader.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-marshal.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-simple-anim.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-transform.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixdata.h",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders.cache",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "162ac9d05d46deef2db26e1fd996f59a7694e20a10808f517519b0fe71464c18"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ani.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "b401c4ae2d1ff6dd964a1f16a9e9b43d5fea5e51cd7c710b7dd43e81b89a8a94"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ani.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "e84386dd280f0cec3718566185f541a52d9c59c2ae0ae70d2ea3deb8a20ce440"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-bmp.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "cf7af845cd3d61bce6beffd06a10bac0a10314d162297e9ecad0b1ae40ff40f9"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-bmp.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "26990e3e7114bfeacb794578469c9accd020a4da0750b04c656b280d022ebc65"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "da82c136be5753b31d60da96448e022ccbda98773c8ee6c5fe47f78c8726351e"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-gif.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "1edae69f3861793f7db617338db7ac187c7607ddca4a1d366aab684a89537df6"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-icns.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "25cc928ad2bb60a6b43921decda1038756a2796da773ec719a904f1b43c45901"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-icns.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "823309b4694fd626be419eccd6e1a25add816a989af952829498d36984958c35"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ico.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "8eeaff8700973a007f538e688b6e6abd7841d148b2696f3da8b41304684952cc"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ico.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "29bf90cdc1ddc105a1355a3dcf6a246c0ffb83cfd0b11b8d05be875061fffb4a"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jpeg.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "31b727b86ac6f864f5ad6c4ceadf833a06e57b3a10c2d42ec7495b01e701406c"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jpeg.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "7af06bd36a78a37354faa4192d9cb1889683cf4856a4ccd654e54d23d3a6b3bc"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "e015fad411ca6f906cb09935eb88594635f19551dcc639122f082d302c0a8527"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "c7da6bf92637ec9ad9b41e89134f2d46df2b9dc53219332cfcc6475822dbfa58"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-pnm.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "78cee78ca4b874721891454358a0a0e3510a7a40e758a2c1a9bbaae862bc3943"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-pnm.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "505a2cdf6a650884c6df30f16ae13f3da2e6f3aac917965e21ce7ca261366b12"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-qtif.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "52cedb95e6fcbbfff81cfd9be9c42840b8626b0527393e60b9c7000d5d50da9f"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-qtif.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "499ac7958f4404df24e6b3daeb8466555cf4f2ae34861ebc23650441194b724c"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tga.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "f8e4a98967c0d15e8bf8c07372d0f810cf73946c157a556977cbd195439f443e"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tga.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "5b4461cb4aca244426074ec0a1f1d579be60fa37e8e37cd7ccde0518d0ff978e"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tiff.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "bc396bd87849ddf605284378f4638c5e971244f3cb39d51844c40e61492de796"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-tiff.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "28f1c5d9c416f61efca7090f8391b7896d24c359591a8583829cc50ab448480f"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xbm.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "b8276ee7fd03ae21cb874bba0d032d6cd04a9d5a3ffcc0732ed361d9993f427b"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xbm.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "69200271a01eecf004c8c25ce4894a1ae861376174905c6c700338a61a2f1b5d"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xpm.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "a5252be30b18701dc91d6d453ecc1e118a544405885f96b37b2ea3dc512b8294"
+      },
+      {
+        "_path": "lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-xpm.so",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "d40ea33142f482e216578fc8a37778a9e12e91ced972f54b4426b7a7b110d784"
+      },
+      {
+        "_path": "lib/girepository-1.0/GdkPixbuf-2.0.typelib",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "lib/libgdk_pixbuf-2.0.la",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "7cc1fed9ce63991c400eaf7d0ed8ada2bc06dee74d5a2cf8f2550fc06c35053c"
+      },
+      {
+        "_path": "lib/libgdk_pixbuf-2.0.so",
+        "path_type": "softlink"
+      },
+      {
+        "_path": "lib/libgdk_pixbuf-2.0.so.0",
+        "path_type": "softlink"
+      },
+      {
+        "_path": "lib/libgdk_pixbuf-2.0.so.0.3200.2",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/recipe_1496222315306/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256_in_prefix": "30639f61fa587d2b91335f413afc374bc6e8b88b58da2f3e7bd9d1da2f320e6e"
+      },
+      {
+        "_path": "lib/pkgconfig/gdk-pixbuf-2.0.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256_in_prefix": "3c2e6b7b7314305ad8b020fc34c738007754934828daf075930f157c3dc7f6b3"
+      },
+      {
+        "_path": "lib64/lib",
+        "path_type": "softlink"
+      },
+      {
+        "_path": "share/gir-1.0/GdkPixbuf-2.0.gir",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/GdkPixbufLoader.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/annotation-glossary.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-12.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-14.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-2.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-26.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-28.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-30.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-32.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-4.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-6.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-2-8.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-deprecated.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/api-index-full.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/composite.png",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Animations.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-File-Loading.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-File-saving.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Image-Data-in-Memory.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Inline-data.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Module-Interface.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Reference-Counting-and-Memory-Mangement.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Scaling.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-The-GdkPixbuf-Structure.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Utilities.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Versioning.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-X-Drawables-to-Pixbufs.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-Xlib-Rendering.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-XlibRGB.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-csource.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-gdk-pixbuf-Xlib-initialization.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-gdk-pixbuf-from-drawables.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-gdk-pixbuf-rendering.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf-query-loaders.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/gdk-pixbuf.devhelp2",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/home.png",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/index.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/left-insensitive.png",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/left.png",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/license.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/right-insensitive.png",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/right.png",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/rn01.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/rn02.html",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/style.css",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/up-insensitive.png",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/gtk-doc/html/gdk-pixbuf/up.png",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/af/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ang/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ar/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/as/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ast/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/az/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/be/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/be@latin/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/bg/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/bn/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/bn_IN/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/br/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/bs/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ca/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ca@valencia/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/crh/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/cs/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/csb/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/cy/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/da/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/de/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/dz/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/el/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/en@shaw/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/en_CA/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/en_GB/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/eo/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/es/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/et/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/eu/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/fa/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/fi/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/fr/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ga/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/gl/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/gu/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/he/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/hi/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/hr/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/hu/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/hy/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ia/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/id/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/io/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/is/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/it/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ja/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ka/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/kk/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/km/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/kn/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ko/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ku/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/li/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/lt/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/lv/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/mai/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/mi/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/mk/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ml/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/mn/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/mr/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ms/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/my/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/nb/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/nds/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ne/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/nl/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/nn/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/nso/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/oc/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/or/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/pa/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/pl/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ps/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/pt/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/pt_BR/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ro/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ru/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/si/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/sk/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/sl/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/sq/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/sr/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/sr@ije/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/sr@latin/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/sv/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ta/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/te/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/tg/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/th/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/tk/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/tr/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/tt/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/ug/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/uk/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/uz/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/uz@cyrillic/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/vi/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/wa/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/xh/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/yi/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/zh_CN/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/zh_HK/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/locale/zh_TW/LC_MESSAGES/gdk-pixbuf.mo",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/man/man1/gdk-pixbuf-csource.1",
+        "path_type": "hardlink"
+      },
+      {
+        "_path": "share/man/man1/gdk-pixbuf-query-loaders.1",
+        "path_type": "hardlink"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "size": 776852,
+  "subdir": "linux-64",
+  "track_features": "",
+  "url": "https://conda.anaconda.org/bioconda/linux-64/gdk-pixbuf-2.32.2-1.tar.bz2",
+  "version": "2.32.2"
+}

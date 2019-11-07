@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	edgeR
+	1	shiny
+	3
+
+[Sun May  5 13:15:38 2019]
+rule edgeR:
+    input: ../output/Rout/pkginstall_state.txt, ../output/outputR/tximeta_se.rds, scripts/run_render.R, scripts/edgeR_dge.Rmd
+    output: ../output/outputR/edgeR_dge.html, ../output/outputR/edgeR_dge.rds
+    log: ../output/Rout/run_dge_edgeR.Rout
+    jobid: 12
+    benchmark: ../output/benchmarks/run_dge_edgeR.txt
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 581 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
+Missing files after 5 seconds:
+../output/outputR/edgeR_dge.html
+../output/outputR/edgeR_dge.rds
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/log/2019-05-05T131536.974235.snakemake.log

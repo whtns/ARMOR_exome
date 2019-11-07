@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 399 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
+Missing input files for rule HISAT2PE:
+/dataVolume/storage/Homo_sapiens/grch38_tran/genome_tran/SA

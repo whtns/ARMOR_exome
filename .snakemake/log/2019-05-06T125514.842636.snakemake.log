@@ -1,0 +1,44 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	HISAT2PE
+	1	all
+	1	bamindexhisat2
+	1	bamsort
+	1	edgeR
+	2	fastqc
+	2	fastqctrimmed
+	1	multiqc
+	1	shiny
+	1	stringtie
+	12
+
+[Mon May  6 12:55:15 2019]
+rule HISAT2PE:
+    input: ../output/FASTQtrimmed/shl20190501-001_R1_val_1.fq.gz, ../output/FASTQtrimmed/shl20190501-001_R2_val_2.fq.gz
+    output: ../output/HISAT2/shl20190501-001/shl20190501-001_Aligned.out.sam
+    log: ../output/logs/HISAT2_shl20190501-001.log
+    jobid: 15
+    benchmark: ../output/benchmarks/HISAT2_shl20190501-001.txt
+    wildcards: sample=shl20190501-001
+
+Activating conda environment: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+[Mon May  6 12:55:16 2019]
+Error in rule HISAT2PE:
+    jobid: 15
+    output: ../output/HISAT2/shl20190501-001/shl20190501-001_Aligned.out.sam
+    log: ../output/logs/HISAT2_shl20190501-001.log
+    conda-env: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+
+RuleException:
+CalledProcessError in line 407 of /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile:
+Command 'source /opt/miniconda3/bin/activate '/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a'; set -euo pipefail;  echo 'HISAT2 version:
+' > ../output/logs/HISAT2_shl20190501-001.log; HISAT2 --version >> ../output/logs/HISAT2_shl20190501-001.log; hisat2 --new-summary --pen-noncansplice 20 --mp 1,0 --sp 3,1 -x <built-in method index of InputFiles object at 0x7f3684ea5ae8> -1 ../output/FASTQtrimmed/shl20190501-001_R1_val_1.fq.gz -2 ../output/FASTQtrimmed/shl20190501-001_R2_val_2.fq.gzHISAT2 --genomeDir /dataVolume/storage/Homo_sapiens/grch38_tran/genome_tran --readFilesIn ../output/FASTQtrimmed/shl20190501-001_R1_val_1.fq.gz ../output/FASTQtrimmed/shl20190501-001_R2_val_2.fq.gz --runThreadN 1 --outFileNamePrefix ../output/HISAT2/shl20190501-001/shl20190501-001_ --outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c' returned non-zero exit status 127.
+  File "/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/Snakefile", line 407, in __rule_HISAT2PE
+  File "/opt/miniconda3/envs/ARMOR/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/log/2019-05-06T125514.842636.snakemake.log

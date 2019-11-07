@@ -1,0 +1,14 @@
+prefix=/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/qt
+
+
+Name: Qt5 Multimedia
+Description: Qt Multimedia module
+Version: 5.6.2
+Libs: -L${libdir} -lQt5Multimedia 
+Libs.private: -L/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a/lib -lQt5Network -lQt5Gui -lQt5Core -lpthread -lGL  
+Cflags: -I${includedir}/QtMultimedia -I${includedir}
+Requires: Qt5Core Qt5Network Qt5Gui
+

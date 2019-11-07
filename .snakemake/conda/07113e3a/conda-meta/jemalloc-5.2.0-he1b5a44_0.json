@@ -1,0 +1,128 @@
+{
+  "build": "he1b5a44_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "libgcc-ng >=7.3.0",
+    "libstdcxx-ng >=7.3.0"
+  ],
+  "extracted_package_dir": "/opt/miniconda3/pkgs/jemalloc-5.2.0-he1b5a44_0",
+  "features": "",
+  "files": [
+    "bin/jemalloc-config",
+    "bin/jemalloc.sh",
+    "bin/jeprof",
+    "include/jemalloc/jemalloc.h",
+    "lib/libjemalloc.a",
+    "lib/libjemalloc.so",
+    "lib/libjemalloc.so.2",
+    "lib/libjemalloc_pic.a",
+    "lib/pkgconfig/jemalloc.pc",
+    "share/doc/jemalloc/jemalloc.html",
+    "share/man/man3/jemalloc.3"
+  ],
+  "fn": "jemalloc-5.2.0-he1b5a44_0.tar.bz2",
+  "license": "BSD 2-Clause",
+  "link": {
+    "source": "/opt/miniconda3/pkgs/jemalloc-5.2.0-he1b5a44_0",
+    "type": 1
+  },
+  "md5": "56dc9bbd462a55a19eddb4809ab82612",
+  "name": "jemalloc",
+  "package_tarball_full_path": "/opt/miniconda3/pkgs/jemalloc-5.2.0-he1b5a44_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/jemalloc-config",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256": "da15bf78735e0668fc31070623871a4143c1b3c8bc8d22b79645203aef2510f0",
+        "sha256_in_prefix": "59a4ff3604f5ea9f2ecd5ee9a681821c0df63dbf29ad81298146a9167da0453a",
+        "size_in_bytes": 4248
+      },
+      {
+        "_path": "bin/jemalloc.sh",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256": "026ec1762501ba09790f91a46fd4bfe15eb5076f8a5383d65798a81a4debb030",
+        "sha256_in_prefix": "d5f113eb7715147c84dacb31501e6f3f284a212247da6e0cdf02ba67cd59952e",
+        "size_in_bytes": 189
+      },
+      {
+        "_path": "bin/jeprof",
+        "path_type": "hardlink",
+        "sha256": "4eda23d9992dc440c1c37234293851070a04776ce15f0dbead9e64e7927374ff",
+        "sha256_in_prefix": "4eda23d9992dc440c1c37234293851070a04776ce15f0dbead9e64e7927374ff",
+        "size_in_bytes": 179141
+      },
+      {
+        "_path": "include/jemalloc/jemalloc.h",
+        "path_type": "hardlink",
+        "sha256": "4448266b2e11a5ed47f246c3e79812ffb4e336696c944ce87f6dd5da9e9e8617",
+        "sha256_in_prefix": "4448266b2e11a5ed47f246c3e79812ffb4e336696c944ce87f6dd5da9e9e8617",
+        "size_in_bytes": 14251
+      },
+      {
+        "_path": "lib/libjemalloc.a",
+        "path_type": "hardlink",
+        "sha256": "ef97bf277e0e764660c8e46d850106a45e7d4162dd555d319e7dcd45ae5927b8",
+        "sha256_in_prefix": "ef97bf277e0e764660c8e46d850106a45e7d4162dd555d319e7dcd45ae5927b8",
+        "size_in_bytes": 12087112
+      },
+      {
+        "_path": "lib/libjemalloc.so",
+        "path_type": "softlink",
+        "sha256": "3f0707c08441711fae1ba42a2ca92006d7a4365722a491fff6070601fdb20e2a",
+        "size_in_bytes": 4402784
+      },
+      {
+        "_path": "lib/libjemalloc.so.2",
+        "path_type": "hardlink",
+        "sha256": "3f0707c08441711fae1ba42a2ca92006d7a4365722a491fff6070601fdb20e2a",
+        "sha256_in_prefix": "3f0707c08441711fae1ba42a2ca92006d7a4365722a491fff6070601fdb20e2a",
+        "size_in_bytes": 4402784
+      },
+      {
+        "_path": "lib/libjemalloc_pic.a",
+        "path_type": "hardlink",
+        "sha256": "7d22e0eada326e9df259a0053f4b29d91586a3fffaf721e3d6e4ef1079d0a6af",
+        "sha256_in_prefix": "7d22e0eada326e9df259a0053f4b29d91586a3fffaf721e3d6e4ef1079d0a6af",
+        "size_in_bytes": 12087864
+      },
+      {
+        "_path": "lib/pkgconfig/jemalloc.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/anaconda1anaconda2anaconda3",
+        "sha256": "5632885db2576ef5b814125c6b4e963b78a2feba189f73341d6ab1b47480af59",
+        "sha256_in_prefix": "c9aeb296557d811e94b1b1116bd51c5d4bbabc72b369d3f807f2f9a79305a0b1",
+        "size_in_bytes": 415
+      },
+      {
+        "_path": "share/doc/jemalloc/jemalloc.html",
+        "path_type": "hardlink",
+        "sha256": "dff6d642fb99aed1a802069a36d171b062e7480c1be3b5da8f659e09b21688bf",
+        "sha256_in_prefix": "dff6d642fb99aed1a802069a36d171b062e7480c1be3b5da8f659e09b21688bf",
+        "size_in_bytes": 166747
+      },
+      {
+        "_path": "share/man/man3/jemalloc.3",
+        "path_type": "hardlink",
+        "sha256": "c592063ffac4f1c78e803ca16fd1508ad4716ae4b1480cefff044c6d722f6d18",
+        "sha256_in_prefix": "c592063ffac4f1c78e803ca16fd1508ad4716ae4b1480cefff044c6d722f6d18",
+        "size_in_bytes": 86809
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "size": 11412707,
+  "subdir": "linux-64",
+  "timestamp": 1554669002615,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/jemalloc-5.2.0-he1b5a44_0.tar.bz2",
+  "version": "5.2.0"
+}

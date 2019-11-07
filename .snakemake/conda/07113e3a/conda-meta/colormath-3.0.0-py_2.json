@@ -1,0 +1,234 @@
+{
+  "build": "py_2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "networkx >=2.0",
+    "numpy",
+    "python"
+  ],
+  "extracted_package_dir": "/opt/miniconda3/pkgs/colormath-3.0.0-py_2",
+  "features": "",
+  "files": [
+    "lib/python3.6/site-packages/colormath-3.0.0-py3.6.egg-info/PKG-INFO",
+    "lib/python3.6/site-packages/colormath-3.0.0-py3.6.egg-info/SOURCES.txt",
+    "lib/python3.6/site-packages/colormath-3.0.0-py3.6.egg-info/dependency_links.txt",
+    "lib/python3.6/site-packages/colormath-3.0.0-py3.6.egg-info/requires.txt",
+    "lib/python3.6/site-packages/colormath-3.0.0-py3.6.egg-info/top_level.txt",
+    "lib/python3.6/site-packages/colormath/__init__.py",
+    "lib/python3.6/site-packages/colormath/chromatic_adaptation.py",
+    "lib/python3.6/site-packages/colormath/color_appearance_models.py",
+    "lib/python3.6/site-packages/colormath/color_constants.py",
+    "lib/python3.6/site-packages/colormath/color_conversions.py",
+    "lib/python3.6/site-packages/colormath/color_diff.py",
+    "lib/python3.6/site-packages/colormath/color_diff_matrix.py",
+    "lib/python3.6/site-packages/colormath/color_exceptions.py",
+    "lib/python3.6/site-packages/colormath/color_objects.py",
+    "lib/python3.6/site-packages/colormath/density.py",
+    "lib/python3.6/site-packages/colormath/density_standards.py",
+    "lib/python3.6/site-packages/colormath/spectral_constants.py",
+    "lib/python3.6/site-packages/colormath/__pycache__/__init__.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/chromatic_adaptation.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/color_appearance_models.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/color_constants.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/color_conversions.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/color_diff.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/color_diff_matrix.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/color_exceptions.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/color_objects.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/density.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/density_standards.cpython-36.pyc",
+    "lib/python3.6/site-packages/colormath/__pycache__/spectral_constants.cpython-36.pyc"
+  ],
+  "fn": "colormath-3.0.0-py_2.tar.bz2",
+  "license": "BSD",
+  "license_family": "BSD",
+  "link": {
+    "source": "/opt/miniconda3/pkgs/colormath-3.0.0-py_2",
+    "type": 1
+  },
+  "md5": "724c323d724ab98bca84f88d03cff543",
+  "name": "colormath",
+  "noarch": "python",
+  "package_tarball_full_path": "/opt/miniconda3/pkgs/colormath-3.0.0-py_2.tar.bz2",
+  "package_type": "noarch_python",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "site-packages/colormath-3.0.0-py3.6.egg-info/PKG-INFO",
+        "path_type": "hardlink",
+        "sha256": "5050d99c33c0144defecdf1b855c15c866a62572001461466d7559bd0e1cd31d",
+        "sha256_in_prefix": "5050d99c33c0144defecdf1b855c15c866a62572001461466d7559bd0e1cd31d",
+        "size_in_bytes": 2518
+      },
+      {
+        "_path": "site-packages/colormath-3.0.0-py3.6.egg-info/SOURCES.txt",
+        "path_type": "hardlink",
+        "sha256": "a0cc78e57f1f3b228b07546a7ef0890dc7c91da7645f22958566c371e19df840",
+        "sha256_in_prefix": "a0cc78e57f1f3b228b07546a7ef0890dc7c91da7645f22958566c371e19df840",
+        "size_in_bytes": 719
+      },
+      {
+        "_path": "site-packages/colormath-3.0.0-py3.6.egg-info/dependency_links.txt",
+        "path_type": "hardlink",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "sha256_in_prefix": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size_in_bytes": 1
+      },
+      {
+        "_path": "site-packages/colormath-3.0.0-py3.6.egg-info/requires.txt",
+        "path_type": "hardlink",
+        "sha256": "3d8ee918818711ad84e963bc896314a42081366f9caae1308ba10ac575e4f097",
+        "sha256_in_prefix": "3d8ee918818711ad84e963bc896314a42081366f9caae1308ba10ac575e4f097",
+        "size_in_bytes": 20
+      },
+      {
+        "_path": "site-packages/colormath-3.0.0-py3.6.egg-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "dcdebfdefea2718fccbcdc060c3e41eb01ea10817c52355390f8134695ea82d1",
+        "sha256_in_prefix": "dcdebfdefea2718fccbcdc060c3e41eb01ea10817c52355390f8134695ea82d1",
+        "size_in_bytes": 10
+      },
+      {
+        "_path": "site-packages/colormath/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "9fefbbbd1817423cdab0c427abeb9c3f37ae6f81f75fc5304add249562e5cea9",
+        "sha256_in_prefix": "9fefbbbd1817423cdab0c427abeb9c3f37ae6f81f75fc5304add249562e5cea9",
+        "size_in_bytes": 18
+      },
+      {
+        "_path": "site-packages/colormath/chromatic_adaptation.py",
+        "path_type": "hardlink",
+        "sha256": "f43fe3187f36e6262802ff771d0951022342bf0b2298c16d1fae8828827a8fb3",
+        "sha256_in_prefix": "f43fe3187f36e6262802ff771d0951022342bf0b2298c16d1fae8828827a8fb3",
+        "size_in_bytes": 4201
+      },
+      {
+        "_path": "site-packages/colormath/color_appearance_models.py",
+        "path_type": "hardlink",
+        "sha256": "7ce47e9d1f392c40b2892c98b84741e9ec6b61f2041f4f39c21d5c20cefb5312",
+        "sha256_in_prefix": "7ce47e9d1f392c40b2892c98b84741e9ec6b61f2041f4f39c21d5c20cefb5312",
+        "size_in_bytes": 47394
+      },
+      {
+        "_path": "site-packages/colormath/color_constants.py",
+        "path_type": "hardlink",
+        "sha256": "b0ccf92e889991cca66d4cff2d239cf059584ee8627f736284d84832f466b319",
+        "sha256_in_prefix": "b0ccf92e889991cca66d4cff2d239cf059584ee8627f736284d84832f466b319",
+        "size_in_bytes": 1611
+      },
+      {
+        "_path": "site-packages/colormath/color_conversions.py",
+        "path_type": "hardlink",
+        "sha256": "dfc7f45554ae8a73194f0152e1d0dd3fa366ec731db52b410987160b97061021",
+        "sha256_in_prefix": "dfc7f45554ae8a73194f0152e1d0dd3fa366ec731db52b410987160b97061021",
+        "size_in_bytes": 32712
+      },
+      {
+        "_path": "site-packages/colormath/color_diff.py",
+        "path_type": "hardlink",
+        "sha256": "74b4d4539b713c8f7eeb09c23c0ce61912ab5f47db7c587b1d358c9da336cb25",
+        "sha256_in_prefix": "74b4d4539b713c8f7eeb09c23c0ce61912ab5f47db7c587b1d358c9da336cb25",
+        "size_in_bytes": 2829
+      },
+      {
+        "_path": "site-packages/colormath/color_diff_matrix.py",
+        "path_type": "hardlink",
+        "sha256": "a415c35160abe1e4de073cee892c0bc8d18ea67f60bedec0e48811240df82191",
+        "sha256_in_prefix": "a415c35160abe1e4de073cee892c0bc8d18ea67f60bedec0e48811240df82191",
+        "size_in_bytes": 5520
+      },
+      {
+        "_path": "site-packages/colormath/color_exceptions.py",
+        "path_type": "hardlink",
+        "sha256": "fd7a25649ccfa87631d6aa94c6cb8b252c20aa85adbbbe55f7c65a7f9f7dc83e",
+        "sha256_in_prefix": "fd7a25649ccfa87631d6aa94c6cb8b252c20aa85adbbbe55f7c65a7f9f7dc83e",
+        "size_in_bytes": 1120
+      },
+      {
+        "_path": "site-packages/colormath/color_objects.py",
+        "path_type": "hardlink",
+        "sha256": "a8a76610a3b7729ed456a8a2bb1c95baa90256951999edda374ad26cb55fe0bb",
+        "sha256_in_prefix": "a8a76610a3b7729ed456a8a2bb1c95baa90256951999edda374ad26cb55fe0bb",
+        "size_in_bytes": 28471
+      },
+      {
+        "_path": "site-packages/colormath/density.py",
+        "path_type": "hardlink",
+        "sha256": "3f15117ddd89f43664c1390b77e89d1d756378ae9b10cffc48c268aec0f321fd",
+        "sha256_in_prefix": "3f15117ddd89f43664c1390b77e89d1d756378ae9b10cffc48c268aec0f321fd",
+        "size_in_bytes": 2494
+      },
+      {
+        "_path": "site-packages/colormath/density_standards.py",
+        "path_type": "hardlink",
+        "sha256": "9b8ac7f79bfb74dc5e22bba1afe4ce6b32ce72c6688ce4931ce8d756d3f49b1c",
+        "sha256_in_prefix": "9b8ac7f79bfb74dc5e22bba1afe4ce6b32ce72c6688ce4931ce8d756d3f49b1c",
+        "size_in_bytes": 9374
+      },
+      {
+        "_path": "site-packages/colormath/spectral_constants.py",
+        "path_type": "hardlink",
+        "sha256": "c05577de8eb1d150b9c1a3d2a680a74f4005f5e86f27d4be5f15793c986e6784",
+        "sha256_in_prefix": "c05577de8eb1d150b9c1a3d2a680a74f4005f5e86f27d4be5f15793c986e6784",
+        "size_in_bytes": 13545
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/__init__.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/chromatic_adaptation.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/color_appearance_models.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/color_constants.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/color_conversions.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/color_diff.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/color_diff_matrix.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/color_exceptions.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/color_objects.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/density.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/density_standards.cpython-36.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.6/site-packages/colormath/__pycache__/spectral_constants.cpython-36.pyc",
+        "path_type": "pyc_file"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "size": 35308,
+  "subdir": "noarch",
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/colormath-3.0.0-py_2.tar.bz2",
+  "version": "3.0.0"
+}

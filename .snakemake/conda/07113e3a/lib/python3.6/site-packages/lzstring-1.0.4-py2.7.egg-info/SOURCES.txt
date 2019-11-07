@@ -1,0 +1,11 @@
+LICENSE.md
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+lzstring/__init__.py
+lzstring.egg-info/PKG-INFO
+lzstring.egg-info/SOURCES.txt
+lzstring.egg-info/dependency_links.txt
+lzstring.egg-info/requires.txt
+lzstring.egg-info/top_level.txt

@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/dataVolume/storage/single_cell_projects/sc_RB_devel/FACS_20190501_sunlee_H_sapiens_proj/ARMOR/.snakemake/conda/07113e3a
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libpcre
+Description: PCRE - Perl compatible regular expressions C library with 8 bit character support
+Version: 8.41
+Libs: -L${libdir} -lpcre
+Libs.private:  
+Cflags: -I${includedir} 

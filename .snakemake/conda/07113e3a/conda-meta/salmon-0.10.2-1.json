@@ -1,0 +1,57 @@
+{
+  "build": "1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/bioconda/linux-64",
+  "constrains": [],
+  "depends": [
+    "boost 1.64*",
+    "bzip2 1.0*",
+    "icu 58.*",
+    "jemalloc >=5.1.0",
+    "libgcc",
+    "tbb",
+    "zlib 1.2.11*"
+  ],
+  "extracted_package_dir": "/opt/miniconda3/pkgs/salmon-0.10.2-1",
+  "features": "",
+  "files": [
+    "bin/salmon",
+    "lib/libsalmon_core.a"
+  ],
+  "fn": "salmon-0.10.2-1.tar.bz2",
+  "license": "GPLv3",
+  "link": {
+    "source": "/opt/miniconda3/pkgs/salmon-0.10.2-1",
+    "type": 1
+  },
+  "md5": "ceb65a73628468a711d684bc0d3bc946",
+  "name": "salmon",
+  "package_tarball_full_path": "/opt/miniconda3/pkgs/salmon-0.10.2-1.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/salmon",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/opt/conda/conda-bld/salmon_1528409373758/_b_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256": "8c15c1eb19736b115bd9a97998ebe14f349a3e13b4b01ca74e48ab944c1fd855",
+        "sha256_in_prefix": "c464bc4fa3ca2ee4cbb481f5e64cf63758ffe147abf0d8f61b0c67305bf45fd1",
+        "size_in_bytes": 12700351
+      },
+      {
+        "_path": "lib/libsalmon_core.a",
+        "path_type": "hardlink",
+        "sha256": "b6093dcf8c99928834b422fa3481e0a51a108524c27ba0fdfd973a1097a618d5",
+        "sha256_in_prefix": "b6093dcf8c99928834b422fa3481e0a51a108524c27ba0fdfd973a1097a618d5",
+        "size_in_bytes": 4379344
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "salmon=0.10.2",
+  "size": 3851805,
+  "subdir": "linux-64",
+  "track_features": "",
+  "url": "https://conda.anaconda.org/bioconda/linux-64/salmon-0.10.2-1.tar.bz2",
+  "version": "0.10.2"
+}
