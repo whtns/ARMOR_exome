@@ -17,7 +17,7 @@ def sanitizefile(str):
 	if str is None:
 		str = ''
 	return str
-
+	
 config['txome'] = sanitizefile(config['txome'])
 config['gtf'] = sanitizefile(config['gtf'])
 config['genome'] = sanitizefile(config['genome'])
@@ -25,6 +25,7 @@ config['STARindex'] = sanitizefile(config['STARindex'])
 config['HISAT2index'] = sanitizefile(config['HISAT2index'])
 config['salmonindex'] = sanitizefile(config['salmonindex'])
 config['metatxt'] = sanitizefile(config['metatxt'])
+config['metacsv'] = os.path.splitext(os.path.basename(config['metatxt']))[0]+'.csv'
 
 ## Read metadata
 if not os.path.isfile(config["metatxt"]):
@@ -49,7 +50,8 @@ def getpath(str):
 		str += '/'
 	return str
 
-outputdir = getpath(config["output"])
+proj_dir = os.path.abspath(os.path.normpath(getpath(config["proj_dir"])))
+outputdir = os.path.abspath(getpath(config["output"])) + "/"
 FASTQdir = getpath(config["FASTQ"])
 
 ## Define the conda environment for all rules using R
@@ -71,7 +73,14 @@ def dbtss_output(wildcards):
 	input = []
 	input.extend(expand(outputdir + "dbtss_coverage/{sample}_dbtss_coverage_over_10.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	return input
-
+	
+def jbrowse_output(wildcards):
+  input = []
+  input.extend(expand("/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/samples/{sample}.bw", sample = samples.names[samples.type == 'PE'].values.tolist()))
+  input.append("/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/trackList.json")
+  return input
+  
+	
 ## ------------------------------------------------------------------------------------ ##
 ## Target definitions
 ## ------------------------------------------------------------------------------------ ##
@@ -81,7 +90,8 @@ rule all:
 		outputdir + "MultiQC/multiqc_report.html",
 		outputdir + "seurat/unfiltered_seu.rds",
 		stringtie_output,
-		dbtss_output
+		# dbtss_output,
+		jbrowse_output
 
 rule setup:
 	input:
@@ -678,12 +688,11 @@ rule tximport:
 	benchmark:
 		outputdir + "benchmarks/tximport.txt"
 	params:
-		stringtiedir = outputdir + "stringtie",
-		proj_dir = config["proj_dir"]
+		stringtiedir = outputdir + "stringtie"
 	conda:
 		Renv
 	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{params.proj_dir}' outrds='{output}'" {input.script} {log}'''
+		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{proj_dir}' outrds='{output}'" {input.script} {log}'''
 
 
 ## ------------------------------------------------------------------------------------ ##
@@ -853,6 +862,63 @@ rule dbtss:
 	shell:
 	  "bedtools coverage -sorted -g {params.genome_file} -a {params.dbtss_bed} -b {input.sorted_bam} | awk '$4 > 10 {{print}}' > {output.coverage_txt}"
 
+## ------------------------------------------------------------------------------------ ##
+## configure jbrowse
+## ------------------------------------------------------------------------------------ ##
+## configure jbrowse
+
+rule jbrowsemeta:
+  input: 
+    metatxt = config['metatxt']
+  output:
+    metacsv = "/var/www/html/jbrowse/" + os.path.basename(proj_dir) + config['metacsv']
+  threads:
+    config['ncores']
+  conda: 
+    "envs/environment.yaml"
+  shell:
+    "cp {input.metatxt} {output.metacsv}"
+
+rule jbrowse:
+	input:
+		hisatbigwig = outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw"
+	output:
+	  bigwig_symlink = "/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/samples/{sample}.bw"
+	threads:
+		config["ncores"]
+	params:
+	  proj_name = os.path.basename(proj_dir)
+	conda:
+		"envs/environment.yaml"
+	shell:
+	  "ln -s {input.hisatbigwig} {output.bigwig_symlink}"
+	  
+rule jbrowsetracklist:
+	input:
+		script = "scripts/format_tracklist_json.py",
+		refdir = config["refdir"],
+		gff = config["gff"],
+		gff_tbi = config["gff_tbi"],
+		refseq = config["refseq"]
+	output:
+	  tracklist_json = "/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/trackList.json",
+	  refdir_symlink = directory("/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/reference/"),
+	  gff_symlink = "/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/Homo_sapiens.GRCh38.87.sorted.gff3.gz",
+	  gff_tbi_symlink = "/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/Homo_sapiens.GRCh38.87.sorted.gff3.gz.tbi",
+	  refseq_symlink = "/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/seq/refSeqs.json"
+	threads:
+		config["ncores"]
+	params:
+	  proj_name = os.path.basename(proj_dir),
+	  metacsv = os.path.basename(proj_dir) + "/" + config['metacsv']
+	conda:
+		"envs/environment.yaml"
+	shell:
+	  "{input.script} '{params.proj_name}' '{params.metacsv}';"
+	  "ln -sr {input.refdir} {output.refdir_symlink};"
+	  "ln -s {input.gff} {output.gff_symlink};"
+	  "ln -s {input.gff_tbi} {output.gff_tbi_symlink};"
+	  "ln -s {input.refseq} {output.refseq_symlink};"
 
 ## ------------------------------------------------------------------------------------ ##
 ## Success and failure messages

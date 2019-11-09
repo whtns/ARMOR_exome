@@ -5,7 +5,8 @@ import os
 import pandas
 import json
 
-proj_name=sys.argv[1]
+proj_name = sys.argv[1]
+metadata = sys.arg[2]
 
 tracks_conf_file="/var/www/html/jbrowse/" + proj_name + "/trackList.json"
 # tracks_conf_file=sys.argv[1]
@@ -63,7 +64,7 @@ bigwig_dict = {
 	"tracks" : tracks_list,
 	"trackMetadata": {
       "sources": [
-           { "type": "csv", "url":  "6_seq_fetal/6_seq_metadata.csv" }
+           { "type": "csv", "url":  metadata }
       ]
   },
    "trackSelector" : {
