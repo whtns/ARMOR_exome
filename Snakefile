@@ -409,7 +409,7 @@ rule HISAT2PE:
 		fastq1 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext1"]) + "_val_1.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext1"]) + "." + str(config["fqsuffix"]) + ".gz",
 		fastq2 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext2"]) + "_val_2.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext2"]) + "." + str(config["fqsuffix"]) + ".gz"
 	output:
-		bam = temp(outputdir + "HISAT2/{sample}/{sample}_Aligned.out.bam")
+		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.out.bam"
 	threads:
 		config["ncores"]
 	log:
@@ -487,7 +487,7 @@ rule stringtie:
 	input:
 		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
 	output:
-		gtf = temp(outputdir + "stringtie/{sample}/{sample}.gtf")
+		gtf = outputdir + "stringtie/{sample}/{sample}.gtf"
 	log:
 		outputdir + "logs/stringtie_{sample}.log"
 	benchmark:
