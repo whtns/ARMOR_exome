@@ -89,7 +89,7 @@ rule all:
 	input:
 		outputdir + "MultiQC/multiqc_report.html",
 		outputdir + "seurat/unfiltered_seu.rds",
-		stringtie_output,
+		# stringtie_output,
 		# dbtss_output,
 		jbrowse_output
 
