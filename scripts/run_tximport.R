@@ -28,9 +28,9 @@ tpm_meta <- seuratTools::load_meta(proj_dir)
 
 feature_seus <- map(list(gene = txi_genes, transcript = txi_transcripts), seu_from_tximport, tpm_meta)
 
-seuratTools::clustering_workflow(proj_dir, feature_seus)
+feature_seus <- seuratTools::clustering_workflow(proj_dir, feature_seus)
 
-# saveRDS(list(st = st, sg = sg), file = outrds)
+saveRDS(feature_seus, file = outrds)
 
 sessionInfo()
 date()
