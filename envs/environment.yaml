@@ -12,3 +12,4 @@ dependencies:
 - bedtools=2.27.1
 - ucsc-bedgraphtobigwig=366
 - pandoc
+- pandas

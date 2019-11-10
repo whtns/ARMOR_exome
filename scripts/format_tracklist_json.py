@@ -6,7 +6,7 @@ import pandas
 import json
 
 proj_name = sys.argv[1]
-metadata = sys.arg[2]
+metadata = sys.argv[2]
 
 tracks_conf_file="/var/www/html/jbrowse/" + proj_name + "/trackList.json"
 # tracks_conf_file=sys.argv[1]
