@@ -688,7 +688,7 @@ rule tximport:
 	benchmark:
 		outputdir + "benchmarks/tximport.txt"
 	params:
-		stringtiedir = outputdir + "stringtie"
+		stringtiedir = outputdir + "stringtie",
 		organism = config["organism"]
 	conda:
 		Renv
