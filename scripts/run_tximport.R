@@ -15,20 +15,19 @@ suppressPackageStartupMessages({
 print(stringtiedir)
 print(proj_dir)
 print(outrds)
+print(organism)
+
+organism = c("Mus_musculus" = "mouse", "Homo_sapiens" = "human")[organism]
 
 proj_dir = rprojroot::find_root(criterion = has_file_pattern("*.Rproj"))
 
 txi_features <- seuratTools::load_counts_from_stringtie(proj_dir)
 
-txi_genes <- txi_features$gene
-txi_transcripts <- txi_features$transcript
-
-
 tpm_meta <- seuratTools::load_meta(proj_dir)
 
-feature_seus <- map(list(gene = txi_genes, transcript = txi_transcripts), seu_from_tximport, tpm_meta)
+feature_seus <- map(txi_features, seu_from_tximport, tpm_meta)
 
-feature_seus <- seuratTools::clustering_workflow(proj_dir, feature_seus)
+feature_seus <- seuratTools::clustering_workflow(proj_dir, feature_seus, organism = organism)
 
 saveRDS(feature_seus, file = outrds)
 

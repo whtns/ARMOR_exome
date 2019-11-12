@@ -689,10 +689,11 @@ rule tximport:
 		outputdir + "benchmarks/tximport.txt"
 	params:
 		stringtiedir = outputdir + "stringtie"
+		organism = config["organism"]
 	conda:
 		Renv
 	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{proj_dir}' outrds='{output}'" {input.script} {log}'''
+		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
 
 
 ## ------------------------------------------------------------------------------------ ##
