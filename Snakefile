@@ -861,7 +861,7 @@ rule dbtss:
 	conda:
 		"envs/environment.yaml"
 	shell:
-	  "bedtools coverage -sorted -g {params.genome_file} -a {params.dbtss_bed} -b {input.sorted_bam} | awk '$4 > 10 {{print}}' > {output.coverage_txt}"
+	  "bedtools coverage -sorted -s -g {params.genome_file} -a {params.dbtss_bed} -b {input.sorted_bam} | awk '$4 > 10 {{print}}' > {output.coverage_txt}"
 
 ## ------------------------------------------------------------------------------------ ##
 ## configure jbrowse
