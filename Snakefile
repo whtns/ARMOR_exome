@@ -89,7 +89,6 @@ rule all:
 	input:
 		outputdir + "MultiQC/multiqc_report.html",
 		outputdir + "seurat/unfiltered_seu.rds",
-		# stringtie_output,
 		# dbtss_output,
 		jbrowse_output
 
@@ -302,8 +301,27 @@ rule fastqctrimmed:
 	shell:
 		"echo 'FastQC version:\n' > {log}; fastqc --version >> {log}; "
 		"fastqc -o {params.FastQC} -t {threads} {input.fastq}"
-
-
+		
+## Rseqc gene body coverage plot
+rule genebodycoverage:
+	input:
+		bigwig = outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw"
+	output:
+		coverage_txt = outputdir + "rseqc/{sample}.geneBodyCoverage.txt"
+	params:
+		sample = "{sample}",
+		bed = config["bed"]
+	log:
+		outputdir + "logs/genebodycoverage_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/genebodycoverage_{sample}.txt"
+	conda:
+		"envs/environment2.yaml"
+	threads:
+		config["ncores"]
+	shell:
+		"echo 'geneBody_coverage.py version:\n' > {log}; geneBody_coverage.py --version >> {log}; "
+		"geneBody_coverage2.py -r {params.bed} -i {input.bigwig}  -o {params.sample}"
 
 # The config.yaml files determines which steps should be performed
 def multiqc_input(wildcards):
@@ -311,6 +329,7 @@ def multiqc_input(wildcards):
 	input.extend(expand(outputdir + "FastQC/{sample}_fastqc.zip", sample = samples.names[samples.type == 'SE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext1"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext2"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
+	input.extend(expand(outputdir + "rseqc/{sample}." + "geneBodyCoverage.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	if config["run_SALMON"]:
 		input.extend(expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist()))
 	if config["run_trimming"]:

@@ -1,0 +1,7 @@
+channels:
+- bioconda
+- conda-forge
+dependencies:
+- rseqc
+- python=2.7
+- ipython
