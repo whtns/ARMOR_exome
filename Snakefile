@@ -309,7 +309,7 @@ rule genebodycoverage:
 	output:
 		coverage_txt = outputdir + "rseqc/{sample}.geneBodyCoverage.txt"
 	params:
-		sample = outputdir + "rseqc/{sample}"
+		sample = outputdir + "rseqc/{sample}",
 		bed = config["bed"]
 	log:
 		outputdir + "logs/genebodycoverage_{sample}.log"
