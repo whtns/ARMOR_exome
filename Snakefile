@@ -316,7 +316,7 @@ rule genebodycoverage:
 	benchmark:
 		outputdir + "benchmarks/genebodycoverage_{sample}.txt"
 	conda:
-		"envs/environment2.yaml"
+		"envs/environment.yaml"
 	threads:
 		config["ncores"]
 	shell:
