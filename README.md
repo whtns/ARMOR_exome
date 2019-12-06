@@ -6,7 +6,8 @@
 5. `snakemake -n --use-conda` for a 'dry run'
 6. `snakemake -j 6 --use-conda` for full run
 
-* try running all of this inside a tmux sesssion 
+* try running all of this inside a tmux sesssion
+* if you get an error saying 'target cannot be locked', check to make sure that snakemake is not running elsewhere at the same time (probably in another tmux session)
 
 # to view all of the rules for a snakemake pipeline:
 
