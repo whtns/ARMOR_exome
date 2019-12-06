@@ -1,4 +1,4 @@
-# to access a snakemake pipeline:
+# to run a snakemake pipeline:
 1. enter project directory
 2. cd to ARMOR directory
 3. `git pull origin master` to be sure you have most update snakemake pipeline
