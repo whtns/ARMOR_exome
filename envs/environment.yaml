@@ -13,6 +13,8 @@ dependencies:
 - ucsc-bedgraphtobigwig=366
 - pandoc
 - pandas
+- cython
+- numba
 - pip
 - pip:
     - velocyto
