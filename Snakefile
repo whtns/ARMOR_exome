@@ -90,7 +90,8 @@ rule all:
 		outputdir + "MultiQC/multiqc_report.html",
 		outputdir + "seurat/unfiltered_seu.rds",
 		# dbtss_output,
-		jbrowse_output
+		jbrowse_output,
+		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
 
 rule setup:
 	input:
@@ -713,6 +714,26 @@ rule tximport:
 		Renv
 	shell:
 		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
+
+## rna velocity
+rule velocyto:
+	input:
+	  outputdir + "Rout/pkginstall_state.txt",
+		bam_files = expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam", sample = samples.names.values.tolist()),
+	output:
+		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
+	log:
+		outputdir + "Rout/velocyto.Rout"
+	benchmark:
+		outputdir + "benchmarks/velocyto.txt"
+	params:
+	  repeat_mask = config["repeat_mask"],
+	  proj_name = os.path.basename(proj_dir),
+	  gtf = config["gtf"]
+	conda:
+		Renv
+	shell:
+		"velocyto run-smartseq2 -o {output.loom_file} -m {params.repeat_mask} -e {params.proj_name} {input.bam_files} {params.gtf}"
 
 
 ## ------------------------------------------------------------------------------------ ##

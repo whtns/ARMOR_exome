@@ -21,6 +21,7 @@ txome: /dataVolume/storage/Homo_sapiens/grch38/txome/Homo_sapiens.GRCh38.cdna.al
 genome: /dataVolume/storage/Homo_sapiens/grch38/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa
 bed: /dataVolume/storage/Homo_sapiens/grch38_tran/Homo_sapiens.GRCh38.87.bed
 gtf: /dataVolume/storage/Homo_sapiens/grch38_tran/Homo_sapiens.GRCh38.87.gtf 
+repeat_mask: /dataVolume/storage/Homo_sapiens/grch38_tran/Homo_sapiens.GRCh38.87.rmsk.gtf
 dbtss_bed: /dataVolume/storage/Homo_sapiens/dbtss/corrected_dbtss.bed
 chrom_sizes: /dataVolume/storage/Homo_sapiens/grch38/Homo_sapiens.GRCh38.dna_sm.primary_assembly.chrom.sizes
 ##--------------------------------------------------------------------------------------------
