@@ -91,7 +91,8 @@ rule all:
 		outputdir + "seurat/unfiltered_seu.rds",
 		# dbtss_output,
 		jbrowse_output,
-		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
+		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom",
+		velocyto_seu = outputdir + "velocyto/" + "unfiltered_seu.rds"
 
 rule setup:
 	input:
@@ -695,26 +696,6 @@ rule tximeta:
 	shell:
 		'''{Rbin} CMD BATCH --no-restore --no-save "--args salmondir='{params.salmondir}' json='{input.json}' metafile='{input.metatxt}' outrds='{output}' annotation='{params.flag}' organism='{params.organism}'" {input.script} {log}'''
 
-## tximport
-rule tximport:
-	input:
-	  outputdir + "Rout/pkginstall_state.txt",
-		expand(outputdir + "stringtie/{sample}/{sample}.gtf", sample = samples.names.values.tolist()),
-		script = "scripts/run_tximport.R"
-	output:
-		outputdir + "seurat/unfiltered_seu.rds"
-	log:
-		outputdir + "Rout/tximport.Rout"
-	benchmark:
-		outputdir + "benchmarks/tximport.txt"
-	params:
-		stringtiedir = outputdir + "stringtie",
-		organism = config["organism"]
-	conda:
-		Renv
-	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
-
 ## rna velocity
 rule velocyto:
 	input:
@@ -734,6 +715,45 @@ rule velocyto:
 		Renv
 	shell:
 		"velocyto run-smartseq2 -o {output.loom_file} -m {params.repeat_mask} -e {params.proj_name} {input.bam_files} {params.gtf}"
+		
+## tximport
+rule tximport:
+	input:
+	  outputdir + "Rout/pkginstall_state.txt",
+		expand(outputdir + "stringtie/{sample}/{sample}.gtf", sample = samples.names.values.tolist()),
+		script = "scripts/run_tximport.R"
+	output:
+		outputdir + "seurat/unfiltered_seu.rds"
+	log:
+		outputdir + "Rout/tximport.Rout"
+	benchmark:
+		outputdir + "benchmarks/tximport.txt"
+	params:
+		stringtiedir = outputdir + "stringtie",
+		organism = config["organism"]
+	conda:
+		Renv
+	shell:
+		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
+		
+## rna velocity on a seurat object
+rule velocyto_seurat:
+  input:
+  	loom_path = outputdir + "velocyto/" + "MyTissue" + ".loom",
+  	seu_file = outputdir + "seurat/unfiltered_seu.rds",
+  	script = "scripts/compute_velocity.R"
+  output:
+    outputdir + "velocyto/unfiltered_seu.rds"
+	log:
+		outputdir + "Rout/velocyto.Rout"
+	benchmark:
+		outputdir + "benchmarks/veloctyo_seurat.txt"
+	params:
+		organism = config["organism"]
+	conda:
+		Renv
+	shell:
+		'''{Rbin} CMD BATCH --no-restore --no-save "--args loom_path='{input.loom_path}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
 
 
 ## ------------------------------------------------------------------------------------ ##
