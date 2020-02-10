@@ -735,11 +735,11 @@ rule tximport:
 		Renv
 	shell:
 		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
-		
+
 ## rna velocity on a seurat object
 rule velocyto_seurat:
   input:
-  	loom_path = outputdir + "velocyto/" + "MyTissue" + ".loom",
+  	loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom",
   	seu_file = outputdir + "seurat/unfiltered_seu.rds",
   	script = "scripts/compute_velocity.R"
   output:
@@ -753,7 +753,7 @@ rule velocyto_seurat:
 	conda:
 		Renv
 	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args loom_path='{input.loom_path}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
+		'''{Rbin} CMD BATCH --no-restore --no-save "--args loom_path='{input.loom_file}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
 
 
 ## ------------------------------------------------------------------------------------ ##
