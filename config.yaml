@@ -119,4 +119,5 @@ run_HISAT2: True
 run_SALMON: False
 run_DRIMSeq: False
 run_camera: False
+run_genebodycoverage: False
 ##---------------------------------------------------------------------------------------------

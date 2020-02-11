@@ -91,8 +91,8 @@ rule all:
 		outputdir + "seurat/unfiltered_seu.rds",
 		# dbtss_output,
 		jbrowse_output,
-		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom",
-		velocyto_seu = outputdir + "velocyto/" + "unfiltered_seu.rds"
+		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
+		# velocyto_seu = outputdir + "velocyto/" + "unfiltered_seu.rds"
 
 rule setup:
 	input:
@@ -331,7 +331,8 @@ def multiqc_input(wildcards):
 	input.extend(expand(outputdir + "FastQC/{sample}_fastqc.zip", sample = samples.names[samples.type == 'SE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext1"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext2"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
-	input.extend(expand(outputdir + "rseqc/{sample}." + "geneBodyCoverage.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
+	if config["run_genebodycoverage"]:
+	  input.extend(expand(outputdir + "rseqc/{sample}." + "geneBodyCoverage.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	if config["run_SALMON"]:
 		input.extend(expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist()))
 	if config["run_trimming"]:
@@ -702,7 +703,7 @@ rule velocyto:
 	  outputdir + "Rout/pkginstall_state.txt",
 		bam_files = expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam", sample = samples.names.values.tolist()),
 	output:
-		loom_file = outputdir + "velocyto"
+		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
 	log:
 		outputdir + "Rout/velocyto.Rout"
 	benchmark:
@@ -710,11 +711,12 @@ rule velocyto:
 	params:
 	  repeat_mask = config["repeat_mask"],
 	  proj_name = os.path.basename(proj_dir),
-	  gtf = config["gtf"]
+	  gtf = config["gtf"],
+	  loom_dir = outputdir + "velocyto/"
 	conda:
 		Renv
 	shell:
-		"velocyto run-smartseq2 -o {output.loom_file} -m {params.repeat_mask} -e {params.proj_name} {input.bam_files} {params.gtf}"
+		"velocyto run-smartseq2 -o {params.loom_dir} -m {params.repeat_mask} -e {params.proj_name} {input.bam_files} {params.gtf}"
 		
 ## tximport
 rule tximport:
