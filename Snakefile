@@ -702,7 +702,7 @@ rule velocyto:
 	  outputdir + "Rout/pkginstall_state.txt",
 		bam_files = expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam", sample = samples.names.values.tolist()),
 	output:
-		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
+		loom_file = outputdir + "velocyto"
 	log:
 		outputdir + "Rout/velocyto.Rout"
 	benchmark:
