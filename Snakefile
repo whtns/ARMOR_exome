@@ -91,7 +91,7 @@ rule all:
 		outputdir + "seurat/unfiltered_seu.rds",
 		# dbtss_output,
 		jbrowse_output,
-		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
+		# loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
 		# velocyto_seu = outputdir + "velocyto/" + "unfiltered_seu.rds"
 
 rule setup:
@@ -435,7 +435,8 @@ rule HISAT2PE:
 	threads:
 		config["ncores"]
 	log:
-		outputdir + "logs/HISAT2_{sample}.log"
+		version = outputdir + "logs/HISAT2_{sample}.log",
+		stats = outputdir + "HISAT2" + "/HISAT2_{sample}_stats.txt"
 	benchmark:
 		outputdir + "benchmarks/HISAT2_{sample}.txt"
 	params:
@@ -444,8 +445,8 @@ rule HISAT2PE:
 	conda:
 		"envs/environment.yaml"
 	shell:
-		"echo 'hisat2 --version:\n' > {log}; hisat2 --version >> {log}; "
-		"hisat2 --new-summary --pen-noncansplice 20 --threads {threads} --mp 1,0 --sp 3,1 -x {params.HISAT2index} -1 {input.fastq1} -2 {input.fastq2} | samtools view -Sbo {output.bam} -"
+		"echo 'hisat2 --version:\n' > {log.version}; hisat2 --version >> {log.version}; "
+		"hisat2 --new-summary --pen-noncansplice 20 --threads {threads} --mp 1,0 --sp 3,1 -x {params.HISAT2index} -1 {input.fastq1} -2 {input.fastq2} 2> {log.stats} | samtools view -Sbo {output.bam}"
 
 # convert and sort sam files
 rule bamsort:
