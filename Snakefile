@@ -1,4 +1,5 @@
 ## Configuration file
+# for exome
 import os
 if len(config) == 0:
   if os.path.isfile("./config.yaml"):
