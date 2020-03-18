@@ -8,7 +8,7 @@ if len(config) == 0:
     sys.exit("Make sure there is a config.yaml file in " + os.getcwd() + " or specify one with the --configfile commandline parameter.")
 
 ## Make sure that all expected variables from the config file are in the config dictionary
-configvars = ['annotation', 'organism', 'build', 'release', 'txome', 'genome', 'gtf', 'salmonindex', 'salmonk', 'STARindex', 'HISAT2index', 'readlength', 'fldMean', 'fldSD', 'metatxt', 'design', 'contrast', 'genesets', 'ncores', 'FASTQ', 'fqext1', 'fqext2', 'fqsuffix', 'output', 'useCondaR', 'Rbin', 'run_trimming', 'run_STAR', 'run_HISAT2', 'run_DRIMSeq', 'run_camera']
+configvars = ['annotation', 'organism', 'build', 'release', 'txome', 'genome', 'gtf', 'readlength', 'fldMean', 'fldSD', 'metatxt', 'design', 'contrast', 'genesets', 'ncores', 'FASTQ', 'fqext1', 'fqext2', 'fqsuffix', 'output', 'useCondaR', 'Rbin', 'run_trimming', 'run_bwa']
 for k in configvars:
 	if k not in config:
 		config[k] = None
@@ -22,9 +22,7 @@ def sanitizefile(str):
 config['txome'] = sanitizefile(config['txome'])
 config['gtf'] = sanitizefile(config['gtf'])
 config['genome'] = sanitizefile(config['genome'])
-config['STARindex'] = sanitizefile(config['STARindex'])
-config['HISAT2index'] = sanitizefile(config['HISAT2index'])
-config['salmonindex'] = sanitizefile(config['salmonindex'])
+config['bwaindex'] = sanitizefile(config['bwaindex'])
 config['metatxt'] = sanitizefile(config['metatxt'])
 config['metacsv'] = os.path.splitext(os.path.basename(config['metatxt']))[0]+'.csv'
 
@@ -81,12 +79,6 @@ def jbrowse_output(wildcards):
   input.append("/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/trackList.json")
   return input
   
-def split_output(wildcards):
-	input = []
-	input.extend(expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bam", sample = samples.names[samples.type == 'PE'].values.tolist()))
-	return input
-  
-  
 	
 ## ------------------------------------------------------------------------------------ ##
 ## Target definitions
@@ -97,10 +89,7 @@ rule all:
 		outputdir + "MultiQC/multiqc_report.html",
 		outputdir + "seurat/unfiltered_seu.rds",
 		# dbtss_output,
-		jbrowse_output,
-		split_output
-		# loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
-		# velocyto_seu = outputdir + "velocyto/" + "unfiltered_seu.rds"
+		jbrowse_output
 
 rule setup:
 	input:
@@ -147,17 +136,11 @@ rule runsalmonquant:
 	input:
 		expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist())
 
-## STAR alignment
-rule runstar:
+## bwa alignment
+rule runbwa:
 	input:
-		expand(outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()),
-		expand(outputdir + "STARbigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist())
-		
-## HISAT2 alignment
-rule runhisat2:
-	input:
-		expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()),
-		expand(outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist())
+		expand(outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()),
+		expand(outputdir + "bwabigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist())
 		
 ## DBTSS coverage
 rule rundbtss:
@@ -187,7 +170,7 @@ rule softwareversions:
 		"echo -n 'ARMOR version ' && cat version; "
 		"salmon --version; trim_galore --version; "
 		"echo -n 'cutadapt ' && cutadapt --version; "
-		"fastqc --version; STAR --version; hisat2 --version; samtools --version; multiqc --version; "
+		"fastqc --version; bwa --version; samtools --version; multiqc --version; "
 		"bedtools --version"
 
 ## ------------------------------------------------------------------------------------ ##
@@ -245,29 +228,6 @@ rule linkedtxome:
 	shell:
 		'''{Rbin} CMD BATCH --no-restore --no-save "--args transcriptfasta='{input.txome}' salmonidx='{input.salmonidx}' gtf='{input.gtf}' annotation='{params.flag}' organism='{params.organism}' release='{params.release}' build='{params.build}' output='{output}'" {input.script} {log}'''
 
-## Generate STAR index
-rule starindex:
-	input:
-		genome = config["genome"],
-		gtf = config["gtf"]
-	output:
-		config["STARindex"] + "/SA",
-		config["STARindex"] + "/chrNameLength.txt"
-	log:
-		outputdir + "logs/STAR_index.log"
-	benchmark:
-		outputdir + "benchmarks/STAR_index.txt"
-	params:
-		STARindex = config["STARindex"],
-		readlength = config["readlength"]
-	conda:
-		"envs/environment.yaml"
-	threads:
-		config["ncores"]
-	shell:
-		"echo 'STAR version:\n' > {log}; STAR --version >> {log}; "
-		"STAR --runMode genomeGenerate --runThreadN {threads} --genomeDir {params.STARindex} "
-		"--genomeFastaFiles {input.genome} --sjdbGTFfile {input.gtf} --sjdbOverhang {params.readlength}"
 
 ## ------------------------------------------------------------------------------------ ##
 ## Quality control
@@ -315,7 +275,7 @@ rule fastqctrimmed:
 ## Rseqc gene body coverage plot
 rule genebodycoverage:
 	input:
-		bigwig = outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw"
+		bigwig = outputdir + "bwabigwig/{sample}_Aligned.sortedByCoord.out.bw"
 	output:
 		coverage_txt = outputdir + "rseqc/{sample}.geneBodyCoverage.txt"
 	params:
@@ -339,8 +299,7 @@ def multiqc_input(wildcards):
 	input.extend(expand(outputdir + "FastQC/{sample}_fastqc.zip", sample = samples.names[samples.type == 'SE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext1"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext2"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
-	if config["run_genebodycoverage"]:
-	  input.extend(expand(outputdir + "rseqc/{sample}." + "geneBodyCoverage.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
+	input.extend(expand(outputdir + "rseqc/{sample}." + "geneBodyCoverage.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	if config["run_SALMON"]:
 		input.extend(expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist()))
 	if config["run_trimming"]:
@@ -350,23 +309,17 @@ def multiqc_input(wildcards):
 		input.extend(expand(outputdir + "FastQC/{sample}_trimmed_fastqc.zip", sample = samples.names[samples.type == 'SE'].values.tolist()))
 		input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext1"]) + "_val_1_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
 		input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext2"]) + "_val_2_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
-	if config["run_STAR"]:
-		input.extend(expand(outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()))
-	if config["run_HISAT2"]:
-		input.extend(expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()))
+	if config["run_bwa"]:
+		input.extend(expand(outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai", sample = samples.names.values.tolist()))
 	return input
 
 ## Determine the input directories for MultiQC depending on the config file
 def multiqc_params(wildcards):
 	param = [outputdir + "FastQC"]
-	if config["run_SALMON"]:
-		param.append(outputdir + "salmon")
 	if config["run_trimming"]:
 		param.append(outputdir + "FASTQtrimmed")
-	if config["run_STAR"]:
-		param.append(outputdir + "STAR")
-	if config["run_HISAT2"]:
-		param.append(outputdir + "HISAT2")
+	if config["run_bwa"]:
+		param.append(outputdir + "bwa")
 	return param
 
 ## MultiQC
@@ -431,37 +384,36 @@ rule trimgalorePE:
 		"--paired {input.fastq1} {input.fastq2}"
 
 ## ------------------------------------------------------------------------------------ ##
-## HISAT2 mapping
+## bwa mapping
 ## ------------------------------------------------------------------------------------ ##
-## Genome mapping with HISAT2
-rule HISAT2PE:
+## Genome mapping with bwa
+rule bwaPE:
 	input:
 		fastq1 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext1"]) + "_val_1.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext1"]) + "." + str(config["fqsuffix"]) + ".gz",
 		fastq2 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext2"]) + "_val_2.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext2"]) + "." + str(config["fqsuffix"]) + ".gz"
 	output:
-		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.out.bam"
+		bam = outputdir + "bwa/{sample}/{sample}_Aligned.out.bam"
 	threads:
 		config["ncores"]
 	log:
-		version = outputdir + "logs/HISAT2_{sample}.log",
-		stats = outputdir + "HISAT2" + "/HISAT2_{sample}_stats.txt"
+		outputdir + "logs/bwa_{sample}.log"
 	benchmark:
-		outputdir + "benchmarks/HISAT2_{sample}.txt"
+		outputdir + "benchmarks/bwa_{sample}.txt"
 	params:
-		HISAT2index = config["HISAT2index"],
-		HISAT2dir = outputdir + "HISAT2"
+		bwaindex = config["bwaindex"],
+		bwadir = outputdir + "bwa"
 	conda:
 		"envs/environment.yaml"
 	shell:
-		"echo 'hisat2 --version:\n' > {log.version}; hisat2 --version >> {log.version}; "
-		"hisat2 --new-summary --pen-noncansplice 20 --threads {threads} --mp 1,0 --sp 3,1 -x {params.HISAT2index} -1 {input.fastq1} -2 {input.fastq2} 2> {log.stats} | samtools view -Sbo {output.bam}"
+		"echo 'bwa --version:\n' > {log}; bwa --version >> {log}; "
+		"bwa --new-summary --pen-noncansplice 20 --threads {threads} --mp 1,0 --sp 3,1 -x {params.bwaindex} -1 {input.fastq1} -2 {input.fastq2} | samtools view -Sbo {output.bam} -"
 
 # convert and sort sam files
 rule bamsort:
 	input:
-		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.out.bam"
+		bam = outputdir + "bwa/{sample}/{sample}_Aligned.out.bam"
 	output:
-		sorted_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+		sorted_bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
 	log:
 		outputdir + "logs/samtools_sort_{sample}.log"
 	benchmark:
@@ -473,11 +425,11 @@ rule bamsort:
 		"samtools sort -O bam -o {output.sorted_bam} {input.bam}"
 
 ## Index bam files
-rule bamindexhisat2:
+rule bamindexbwa:
 	input:
-		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+		bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
 	output:
-		outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai"
+		outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai"
 	log:
 		outputdir + "logs/samtools_index_{sample}.log"
 	benchmark:
@@ -489,14 +441,14 @@ rule bamindexhisat2:
 		"samtools index {input.bam}"
 
 ## Convert BAM files to bigWig
-rule bigwighisat2:
+rule bigwigbwa:
 	input:
-		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam",
-		chrl = os.path.dirname(config["HISAT2index"]) + "/chrNameLength.txt"
+		bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam",
+		chrl = os.path.dirname(config["bwaindex"]) + "/chrNameLength.txt"
 	output:
-		outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw"
+		outputdir + "bwabigwig/{sample}_Aligned.sortedByCoord.out.bw"
 	params:
-		HISAT2bigwigdir = outputdir + "HISAT2bigwig"
+		bwabigwigdir = outputdir + "bwabigwig"
 	log:
 		outputdir + "logs/bigwig_{sample}.log"
 	benchmark:
@@ -506,88 +458,9 @@ rule bigwighisat2:
 	shell:
 		"echo 'bedtools version:\n' > {log}; bedtools --version >> {log}; "
 		"bedtools genomecov -split -ibam {input.bam} -bg | LC_COLLATE=C sort -k1,1 -k2,2n > "
-		"{params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph; "
-		"bedGraphToBigWig {params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph "
-		"{input.chrl} {output}; rm -f {params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph"
-		
-## ------------------------------------------------------------------------------------ ##
-## Split Intronic/Exonic
-## ------------------------------------------------------------------------------------ ##
-# Assign Reads to cDNA/gDNA based on exonic overlap
-rule split_exonic:
-	input:
-		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam",
-		script = "scripts/bed_from_areas_covered_N_or_below.py"
-	output:
-		gdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bam",
-		# gdna_bed_below_n = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bed",
-		cdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.cdna.bam"
-	log:
-		outputdir + "logs/bedtools_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/bedtools_{sample}.txt"
-	threads:
-		config["ncores"]
-	params:
-	  exonic_bed = config["exonic_bed"],
-	  n_coverage = config["n_coverage"],
-	  chrom_sizes = config["chrom_sizes"]
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'bedtools version:\n' > {log}; bedtools --version >> {log}; "
-		"bedtools intersect -g {params.chrom_sizes} -sorted -wa -v -abam {input.bam} -b {params.exonic_bed} | "
-		"samtools depth /dev/stdin | {input.script} {params.n_coverage} | "
-		"bedtools intersect -g {params.chrom_sizes} -sorted -wa -abam {input.bam} -b stdin > {output.gdna_bam}; "
-		"bedtools intersect -g {params.chrom_sizes} -sorted -wa -abam {input.bam} -b {params.exonic_bed} 2> {log} > {output.cdna_bam}"
-		
-rule split_bamindex:
-	input:
-		gdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bam",
-		cdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.cdna.bam"
-	output:
-		gdna_bai = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.gdna.bai",
-		cdna_bai = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.cdna.bai"
-	log:
-		outputdir + "logs/samtools_index_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/samtools_index_{sample}.txt"
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'samtools version:\n' > {log}; samtools --version >> {log}; "
-		"samtools index {input.gdna_bam}; "
-		"samtools index {input.cdna_bam}"
-
-## ------------------------------------------------------------------------------------ ##
-## CopywriteR
-## ------------------------------------------------------------------------------------ ##
-## CopywriteR
-
-def human_readable(bin_size):
-  bin_size = bin_size/1000
-  bin_size = f'{bin_size}kb'
-  print(bin_size)
-
-rule CopywriteR:
-	input:
-	  outputdir + "Rout/pkginstall_state.txt",
-	  sample_files = expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bam", sample = samples.names.values.tolist()),
-	  script = "scripts/run_copywriter.R"
-	output:
-		outputdir + "Rout/copywriter" + "/segment.Rdata"
-	log:
-		outputdir + "Rout/copywriter.Rout"
-	benchmark:
-		outputdir + "benchmarks/copywriter.txt"
-	params:
-	  bin_size = config["bin_size"],
-	  copywriter_output_dir = proj_dir + "output/copywriter",
-		exonic_bed = config["exonic_bed"]
-	conda:
-		Renv
-	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args copywriter_output_dir='{params.copywriter_output_dir}' bin_size='{params.bin_size}' sample_files = '{input.sample_files}' copywriter_capture_regions='{params.exonic_bed}'" {input.script} {log}'''
+		"{params.bwabigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph; "
+		"bedGraphToBigWig {params.bwabigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph "
+		"{input.chrl} {output}; rm -f {params.bwabigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph"
 
 ## ------------------------------------------------------------------------------------ ##
 ## Stringtie
@@ -595,7 +468,7 @@ rule CopywriteR:
 # Transcript assembly using StringTie
 rule stringtie:
 	input:
-		cdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.cdna.bam"
+		bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
 	output:
 		gtf = outputdir + "stringtie/{sample}/{sample}.gtf"
 	log:
@@ -611,7 +484,7 @@ rule stringtie:
 		"envs/environment.yaml"
 	shell:
 		"echo 'stringtie version:\n' > {log}; stringtie --version >> {log}; "
-		"stringtie {input.cdna_bam} -G {params.stringtiegtf} -x MT -eB -o {output.gtf}"
+		"stringtie {input.bam} -G {params.stringtiegtf} -x MT -eB -o {output.gtf}"
 
 ## ------------------------------------------------------------------------------------ ##
 ## Salmon abundance estimation
@@ -667,184 +540,6 @@ rule salmonPE:
 		"salmon quant -i {params.salmonindex} -l A -1 {input.fastq1} -2 {input.fastq2} "
 		"-o {params.salmondir}/{wildcards.sample} --seqBias --gcBias "
 		"--fldMean {params.fldMean} --fldSD {params.fldSD} -p {threads}"
-
-## ------------------------------------------------------------------------------------ ##
-## STAR mapping
-## ------------------------------------------------------------------------------------ ##
-## Genome mapping with STAR
-rule starSE:
-	input:
-		index = config["STARindex"] + "/SA",
-		fastq = outputdir + "FASTQtrimmed/{sample}_trimmed.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}." + str(config["fqsuffix"]) + ".gz"
-	output:
-		outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
-	threads:
-		config["ncores"]
-	log:
-		outputdir + "logs/STAR_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/STAR_{sample}.txt"
-	params:
-		STARindex = config["STARindex"],
-		STARdir = outputdir + "STAR"
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'STAR version:\n' > {log}; STAR --version >> {log}; "
-		"STAR --genomeDir {params.STARindex} --readFilesIn {input.fastq} "
-		"--runThreadN {threads} --outFileNamePrefix {params.STARdir}/{wildcards.sample}/{wildcards.sample}_ "
-		"--outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c"
-
-rule starPE:
-	input:
-		index = config["STARindex"] + "/SA",
-		fastq1 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext1"]) + "_val_1.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext1"]) + "." + str(config["fqsuffix"]) + ".gz",
-		fastq2 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext2"]) + "_val_2.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext2"]) + "." + str(config["fqsuffix"]) + ".gz"
-	output:
-		outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
-	threads:
-		config["ncores"]
-	log:
-		outputdir + "logs/STAR_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/STAR_{sample}.txt"
-	params:
-		STARindex = config["STARindex"],
-		STARdir = outputdir + "STAR"
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'STAR version:\n' > {log}; STAR --version >> {log}; "
-		"STAR --genomeDir {params.STARindex} --readFilesIn {input.fastq1} {input.fastq2} "
-		"--runThreadN {threads} --outFileNamePrefix {params.STARdir}/{wildcards.sample}/{wildcards.sample}_ "
-		"--outSAMtype BAM SortedByCoordinate --readFilesCommand gunzip -c"
-
-## Index bam files
-rule bamindex:
-	input:
-		bam = outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
-	output:
-		outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam.bai"
-	log:
-		outputdir + "logs/samtools_index_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/samtools_index_{sample}.txt"
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'samtools version:\n' > {log}; samtools --version >> {log}; "
-		"samtools index {input.bam}"
-
-## Convert BAM files to bigWig
-rule bigwig:
-	input:
-		bam = outputdir + "STAR/{sample}/{sample}_Aligned.sortedByCoord.out.bam",
-		chrl = config["STARindex"] + "/chrNameLength.txt"
-	output:
-		outputdir + "STARbigwig/{sample}_Aligned.sortedByCoord.out.bw"
-	params:
-		STARbigwigdir = outputdir + "STARbigwig"
-	log:
-		outputdir + "logs/bigwig_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/bigwig_{sample}.txt"
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'bedtools version:\n' > {log}; bedtools --version >> {log}; "
-		"bedtools genomecov -split -ibam {input.bam} -bg | LC_COLLATE=C sort -k1,1 -k2,2n > "
-		"{params.STARbigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph; "
-		"bedGraphToBigWig {params.STARbigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph "
-		"{input.chrl} {output}; rm -f {params.STARbigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph"
-
-## ------------------------------------------------------------------------------------ ##
-## Transcript quantification
-## ------------------------------------------------------------------------------------ ##
-
-## tximeta
-rule tximeta:
-	input:
-	  outputdir + "Rout/pkginstall_state.txt",
-		expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist()),
-		metatxt = config["metatxt"],
-		salmonidx = config["salmonindex"] + "/hash.bin",
-		json = config["salmonindex"] + ".json",
-		script = "scripts/run_tximeta.R"
-	output:
-		outputdir + "outputR/tximeta.rds"
-	log:
-		outputdir + "Rout/tximeta.Rout"
-	benchmark:
-		outputdir + "benchmarks/tximeta.txt"
-	params:
-		salmondir = outputdir + "salmon",
-		flag = config["annotation"],
-		organism = config["organism"]
-	conda:
-		Renv
-	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args salmondir='{params.salmondir}' json='{input.json}' metafile='{input.metatxt}' outrds='{output}' annotation='{params.flag}' organism='{params.organism}'" {input.script} {log}'''
-
-## rna velocity
-rule velocyto:
-	input:
-	  outputdir + "Rout/pkginstall_state.txt",
-		bam_files = expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam", sample = samples.names.values.tolist()),
-	output:
-		loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
-	log:
-		outputdir + "Rout/velocyto.Rout"
-	benchmark:
-		outputdir + "benchmarks/velocyto.txt"
-	params:
-	  repeat_mask = config["repeat_mask"],
-	  proj_name = os.path.basename(proj_dir),
-	  gtf = config["gtf"],
-	  loom_dir = outputdir + "velocyto/"
-	conda:
-		Renv
-	shell:
-		"velocyto run-smartseq2 -o {params.loom_dir} -m {params.repeat_mask} -e {params.proj_name} {input.bam_files} {params.gtf}"
-		
-## tximport
-rule tximport:
-	input:
-	  outputdir + "Rout/pkginstall_state.txt",
-		expand(outputdir + "stringtie/{sample}/{sample}.gtf", sample = samples.names.values.tolist()),
-		script = "scripts/run_tximport.R"
-	output:
-		outputdir + "seurat/unfiltered_seu.rds"
-	log:
-		outputdir + "Rout/tximport.Rout"
-	benchmark:
-		outputdir + "benchmarks/tximport.txt"
-	params:
-		stringtiedir = outputdir + "stringtie",
-		organism = config["organism"]
-	conda:
-		Renv
-	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args stringtiedir='{params.stringtiedir}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
-
-## rna velocity on a seurat object
-rule velocyto_seurat:
-  input:
-  	loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom",
-  	seu_file = outputdir + "seurat/unfiltered_seu.rds",
-  	script = "scripts/compute_velocity.R"
-  output:
-    outputdir + "velocyto/unfiltered_seu.rds"
-	log:
-		outputdir + "Rout/velocyto.Rout"
-	benchmark:
-		outputdir + "benchmarks/veloctyo_seurat.txt"
-	params:
-		organism = config["organism"]
-	conda:
-		Renv
-	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args loom_path='{input.loom_file}' proj_dir='{proj_dir}' outrds='{output}' organism='{params.organism}'" {input.script} {log}'''
-
 
 ## ------------------------------------------------------------------------------------ ##
 ## Input variable check
@@ -953,18 +648,14 @@ rule DRIMSeq:
 ## ------------------------------------------------------------------------------------ ##
 def shiny_input(wildcards):
 	input = [outputdir + "Rout/pkginstall_state.txt"]
-	if config["run_STAR"]:
-		input.extend(expand(outputdir + "STARbigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist()))
-	if config["run_HISAT2"]:
-		input.extend(expand(outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist()))
+	if config["run_bwa"]:
+		input.extend(expand(outputdir + "bwabigwig/{sample}_Aligned.sortedByCoord.out.bw", sample = samples.names.values.tolist()))
 	return input
 
 def shiny_params(wildcards):
 	param = ["outputdir='" + outputdir + "outputR'"]
-	if config["run_STAR"]:
-		param.append("bigwigdir='" + outputdir + "STARbigwig'")
-	if config["run_HISAT2"]:
-		param.append("bigwigdir='" + outputdir + "HISAT2bigwig'")
+	if config["run_bwa"]:
+		param.append("bigwigdir='" + outputdir + "bwabigwig'")
 	return param
 
 ## shiny
@@ -996,7 +687,7 @@ rule shiny:
 ## compute coverage from dbtss
 rule dbtss:
 	input:
-		sorted_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+		sorted_bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
 	output:
 		coverage_txt = outputdir + "dbtss_coverage/{sample}_dbtss_coverage_over_10.txt"
 	threads:
@@ -1032,7 +723,7 @@ rule jbrowsemeta:
 
 rule jbrowse:
 	input:
-		hisatbigwig = outputdir + "HISAT2bigwig/{sample}_Aligned.sortedByCoord.out.bw"
+		hisatbigwig = outputdir + "bwabigwig/{sample}_Aligned.sortedByCoord.out.bw"
 	output:
 	  bigwig_symlink = "/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/samples/{sample}.bw"
 	threads:

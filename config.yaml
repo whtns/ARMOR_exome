@@ -119,10 +119,6 @@ Rbin: "/usr/bin/R"
 ## Should read trimming, STAR mapping, DRIMSeq analysis and gene set analysis be performed? Set
 ## to False if the step is not required.
 run_trimming: True
-run_STAR: False
-run_HISAT2: True
-run_SALMON: False
-run_DRIMSeq: False
-run_camera: False
+run_bwa: TRUE
 run_genebodycoverage: False
 ##---------------------------------------------------------------------------------------------
