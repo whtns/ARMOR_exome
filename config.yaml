@@ -20,6 +20,9 @@ release: 87
 txome: /dataVolume/storage/Homo_sapiens/grch38/txome/Homo_sapiens.GRCh38.cdna.all.fa.gz
 genome: /dataVolume/storage/Homo_sapiens/grch38/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa
 bed: /dataVolume/storage/Homo_sapiens/grch38_tran/Homo_sapiens.GRCh38.87.bed
+# exonic_bed: /dataVolume/storage/Homo_sapiens/grch38_tran/Homo_sapiens.GRCh38.87.exonic.bed
+exonic_bed: test.bed
+bin_size: 500000
 gtf: /dataVolume/storage/Homo_sapiens/grch38_tran/Homo_sapiens.GRCh38.87.gtf 
 repeat_mask: /dataVolume/storage/Homo_sapiens/grch38_tran/Homo_sapiens.GRCh38.87.rmsk.gtf
 dbtss_bed: /dataVolume/storage/Homo_sapiens/dbtss/corrected_dbtss.bed
@@ -38,7 +41,7 @@ HISAT2index: /dataVolume/storage/Homo_sapiens/grch38_tran/genome_tran
 
 ## Information about the experiment
 ##--------------------------------------------------------------------------------------------
-readlength: 75
+readlength: 150
 
 ## Mean and standard deviation of the fragment length distribution, for use with Salmon. 
 ## This is important to specify for single-end reads.
@@ -70,6 +73,8 @@ genesets: H,C5
 ## Note that the actual number of cores available to Snakemake is determined by
 ## the --cores argument when it is invoked.
 ncores: 6
+
+n_coverage: 3
 ##---------------------------------------------------------------------------------------------
 
 

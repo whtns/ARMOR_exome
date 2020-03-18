@@ -80,6 +80,12 @@ def jbrowse_output(wildcards):
   input.append("/var/www/html/jbrowse/" + os.path.basename(proj_dir) + "/trackList.json")
   return input
   
+def split_output(wildcards):
+	input = []
+	input.extend(expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bam", sample = samples.names[samples.type == 'PE'].values.tolist()))
+	return input
+  
+  
 	
 ## ------------------------------------------------------------------------------------ ##
 ## Target definitions
@@ -91,6 +97,7 @@ rule all:
 		outputdir + "seurat/unfiltered_seu.rds",
 		# dbtss_output,
 		jbrowse_output,
+		split_output
 		# loom_file = outputdir + "velocyto/" + os.path.basename(proj_dir) + ".loom"
 		# velocyto_seu = outputdir + "velocyto/" + "unfiltered_seu.rds"
 
@@ -501,6 +508,85 @@ rule bigwighisat2:
 		"{params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph; "
 		"bedGraphToBigWig {params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph "
 		"{input.chrl} {output}; rm -f {params.HISAT2bigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph"
+		
+## ------------------------------------------------------------------------------------ ##
+## Split Intronic/Exonic
+## ------------------------------------------------------------------------------------ ##
+# Assign Reads to cDNA/gDNA based on exonic overlap
+rule split_exonic:
+	input:
+		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam",
+		script = "scripts/bed_from_areas_covered_N_or_below.py"
+	output:
+		gdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bam",
+		# gdna_bed_below_n = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bed",
+		cdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.cdna.bam"
+	log:
+		outputdir + "logs/bedtools_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/bedtools_{sample}.txt"
+	threads:
+		config["ncores"]
+	params:
+	  exonic_bed = config["exonic_bed"],
+	  n_coverage = config["n_coverage"],
+	  chrom_sizes = config["chrom_sizes"]
+	conda:
+		"envs/environment.yaml"
+	shell:
+		"echo 'bedtools version:\n' > {log}; bedtools --version >> {log}; "
+		"bedtools intersect -g {params.chrom_sizes} -sorted -wa -v -abam {input.bam} -b {params.exonic_bed} | "
+		"samtools depth /dev/stdin | {input.script} {params.n_coverage} | "
+		"bedtools intersect -g {params.chrom_sizes} -sorted -wa -abam {input.bam} -b stdin > {output.gdna_bam}; "
+		"bedtools intersect -g {params.chrom_sizes} -sorted -wa -abam {input.bam} -b {params.exonic_bed} 2> {log} > {output.cdna_bam}"
+		
+rule split_bamindex:
+	input:
+		gdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bam",
+		cdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.cdna.bam"
+	output:
+		gdna_bai = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.gdna.bai",
+		cdna_bai = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.cdna.bai"
+	log:
+		outputdir + "logs/samtools_index_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/samtools_index_{sample}.txt"
+	conda:
+		"envs/environment.yaml"
+	shell:
+		"echo 'samtools version:\n' > {log}; samtools --version >> {log}; "
+		"samtools index {input.gdna_bam}; "
+		"samtools index {input.cdna_bam}"
+
+## ------------------------------------------------------------------------------------ ##
+## CopywriteR
+## ------------------------------------------------------------------------------------ ##
+## CopywriteR
+
+def human_readable(bin_size):
+  bin_size = bin_size/1000
+  bin_size = f'{bin_size}kb'
+  print(bin_size)
+
+rule CopywriteR:
+	input:
+	  outputdir + "Rout/pkginstall_state.txt",
+	  sample_files = expand(outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.gdna.bam", sample = samples.names.values.tolist()),
+	  script = "scripts/run_copywriter.R"
+	output:
+		outputdir + "Rout/copywriter" + "/segment.Rdata"
+	log:
+		outputdir + "Rout/copywriter.Rout"
+	benchmark:
+		outputdir + "benchmarks/copywriter.txt"
+	params:
+	  bin_size = config["bin_size"],
+	  copywriter_output_dir = proj_dir + "output/copywriter",
+		exonic_bed = config["exonic_bed"]
+	conda:
+		Renv
+	shell:
+		'''{Rbin} CMD BATCH --no-restore --no-save "--args copywriter_output_dir='{params.copywriter_output_dir}' bin_size='{params.bin_size}' sample_files = '{input.sample_files}' copywriter_capture_regions='{params.exonic_bed}'" {input.script} {log}'''
 
 ## ------------------------------------------------------------------------------------ ##
 ## Stringtie
@@ -508,7 +594,7 @@ rule bigwighisat2:
 # Transcript assembly using StringTie
 rule stringtie:
 	input:
-		bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+		cdna_bam = outputdir + "HISAT2/{sample}/{sample}_Aligned.sortedByCoord.cdna.bam"
 	output:
 		gtf = outputdir + "stringtie/{sample}/{sample}.gtf"
 	log:
@@ -524,7 +610,7 @@ rule stringtie:
 		"envs/environment.yaml"
 	shell:
 		"echo 'stringtie version:\n' > {log}; stringtie --version >> {log}; "
-		"stringtie {input.bam} -G {params.stringtiegtf} -x MT -eB -o {output.gtf}"
+		"stringtie {input.cdna_bam} -G {params.stringtiegtf} -x MT -eB -o {output.gtf}"
 
 ## ------------------------------------------------------------------------------------ ##
 ## Salmon abundance estimation
