@@ -1,3 +1,4 @@
+
 ## Configuration file
 # for exome
 import os
@@ -62,12 +63,6 @@ else:
 ## Define the R binary
 Rbin = config["Rbin"]
 
-# The config.yaml files determines which steps should be performed
-def stringtie_output(wildcards):
-	input = []
-	input.extend(expand(outputdir + "stringtie/{sample}/{sample}.gtf", sample = samples.names[samples.type == 'PE'].values.tolist()))
-	return input
-	
 def dbtss_output(wildcards):
 	input = []
 	input.extend(expand(outputdir + "dbtss_coverage/{sample}_dbtss_coverage_over_10.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
@@ -87,7 +82,6 @@ def jbrowse_output(wildcards):
 rule all:
 	input:
 		outputdir + "MultiQC/multiqc_report.html",
-		outputdir + "seurat/unfiltered_seu.rds",
 		# dbtss_output,
 		jbrowse_output
 
@@ -131,11 +125,6 @@ rule runtrimming:
 		expand(outputdir + "FastQC/{sample}_" + str(config["fqext2"]) + "_val_2_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()),
 		expand(outputdir + "FastQC/{sample}_trimmed_fastqc.zip", sample = samples.names[samples.type == 'SE'].values.tolist())
 
-## Salmon quantification
-rule runsalmonquant:
-	input:
-		expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist())
-
 ## bwa alignment
 rule runbwa:
 	input:
@@ -172,62 +161,6 @@ rule softwareversions:
 		"echo -n 'cutadapt ' && cutadapt --version; "
 		"fastqc --version; bwa --version; samtools --version; multiqc --version; "
 		"bedtools --version"
-
-## ------------------------------------------------------------------------------------ ##
-## Reference preparation
-## ------------------------------------------------------------------------------------ ##
-## Generate Salmon index from merged cDNA and ncRNA files
-rule salmonindex:
-	input:
-		txome = config["txome"]
-	output:
-		config["salmonindex"] + "/hash.bin"
-	log:
-		outputdir + "logs/salmon_index.log"
-	benchmark:
-		outputdir + "benchmarks/salmon_index.txt"
-	params:
-		salmonk = config["salmonk"],
-		salmonoutdir = config["salmonindex"],
-		anno = config["annotation"]
-	conda:
-		"envs/environment.yaml"
-	shell:
-	  """
-	  if [ {params.anno} == "Gencode" ]; then
-      echo 'Salmon version:\n' > {log}; salmon --version >> {log};
-  	  salmon index -t {input.txome} -k {params.salmonk} -i {params.salmonoutdir} --gencode --type quasi
-
-    else
-  	  echo 'Salmon version:\n' > {log}; salmon --version >> {log};
-      salmon index -t {input.txome} -k {params.salmonk} -i {params.salmonoutdir} --type quasi
-    fi
-    """
-
-## Generate linkedtxome mapping
-rule linkedtxome:
-	input:
-		txome = config["txome"],
-		gtf = config["gtf"],
-		salmonidx = config["salmonindex"] + "/hash.bin",
-		script = "scripts/generate_linkedtxome.R",
-		install = outputdir + "Rout/pkginstall_state.txt"
-	log:
-		outputdir + "Rout/generate_linkedtxome.Rout"
-	benchmark:
-		outputdir + "benchmarks/generate_linkedtxome.txt"
-	output:
-		config["salmonindex"] + ".json"
-	params:
-		flag = config["annotation"],
-		organism = config["organism"],
-		release = str(config["release"]),
-		build = config["build"]
-	conda:
-		Renv
-	shell:
-		'''{Rbin} CMD BATCH --no-restore --no-save "--args transcriptfasta='{input.txome}' salmonidx='{input.salmonidx}' gtf='{input.gtf}' annotation='{params.flag}' organism='{params.organism}' release='{params.release}' build='{params.build}' output='{output}'" {input.script} {log}'''
-
 
 ## ------------------------------------------------------------------------------------ ##
 ## Quality control
@@ -299,9 +232,8 @@ def multiqc_input(wildcards):
 	input.extend(expand(outputdir + "FastQC/{sample}_fastqc.zip", sample = samples.names[samples.type == 'SE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext1"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	input.extend(expand(outputdir + "FastQC/{sample}_" + str(config["fqext2"]) + "_fastqc.zip", sample = samples.names[samples.type == 'PE'].values.tolist()))
-	input.extend(expand(outputdir + "rseqc/{sample}." + "geneBodyCoverage.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
-	if config["run_SALMON"]:
-		input.extend(expand(outputdir + "salmon/{sample}/quant.sf", sample = samples.names.values.tolist()))
+	if config["run_genebodycoverage"]:
+	  input.extend(expand(outputdir + "rseqc/{sample}." + "geneBodyCoverage.txt", sample = samples.names[samples.type == 'PE'].values.tolist()))
 	if config["run_trimming"]:
 		input.extend(expand(outputdir + "FASTQtrimmed/{sample}_trimmed.fq.gz", sample = samples.names[samples.type == 'SE'].values.tolist()))
 		input.extend(expand(outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext1"]) + "_val_1.fq.gz", sample = samples.names[samples.type == 'PE'].values.tolist()))
@@ -402,11 +334,13 @@ rule bwaPE:
 	params:
 		bwaindex = config["bwaindex"],
 		bwadir = outputdir + "bwa"
+	threads:
+	  config["ncores"]
 	conda:
 		"envs/environment.yaml"
 	shell:
-		"echo 'bwa --version:\n' > {log}; bwa --version >> {log}; "
-		"bwa --new-summary --pen-noncansplice 20 --threads {threads} --mp 1,0 --sp 3,1 -x {params.bwaindex} -1 {input.fastq1} -2 {input.fastq2} | samtools view -Sbo {output.bam} -"
+		"echo 'bwa' > {log}; "
+		"bwa mem -M -t {threads} {params.bwaindex} {input.fastq1} {input.fastq2} | samtools view -Sbo {output.bam}"
 
 # convert and sort sam files
 rule bamsort:
@@ -440,15 +374,63 @@ rule bamindexbwa:
 		"echo 'samtools version:\n' > {log}; samtools --version >> {log}; "
 		"samtools index {input.bam}"
 
+# section        
+
+rule mark_duplicates:
+  input:
+    outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+  output:
+    bam=temp(outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.deduped.bam"),
+    metrics="qc/dedup/{sample}.metrics.txt"
+  log:
+    "logs/picard/dedup/{sample}.log"
+  params:
+    config["params"]["picard"]["MarkDuplicates"]
+  wrapper:
+    "0.26.1/bio/picard/markduplicates"
+
+## Index bam files
+rule bamindexdeduped:
+	input:
+	  bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.deduped.bam"
+	output:
+		outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.deduped.bam.bai"
+	log:
+		outputdir + "logs/samtools_index_{sample}.log"
+	benchmark:
+		outputdir + "benchmarks/samtools_index_{sample}.txt"
+	conda:
+		"envs/environment.yaml"
+	shell:
+		"echo 'samtools version:\n' > {log}; samtools --version >> {log}; "
+		"samtools index {input.bam}"
+
+
+rule recalibrate_base_qualities:
+  input:
+    bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.deduped.bam",
+    bai = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.deduped.bam.bai",
+    ref = config["genome"],
+    known=config["known-variants"]
+  output:
+    bam=protected("recal/{sample}.bam")
+  params:
+  log:
+    "logs/gatk/bqsr/{sample}.log"
+  wrapper:
+    "0.27.1/bio/gatk/baserecalibrator"
+
+# section        
+
 ## Convert BAM files to bigWig
 rule bigwigbwa:
 	input:
-		bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam",
-		chrl = os.path.dirname(config["bwaindex"]) + "/chrNameLength.txt"
+		bam = "recal/{sample}.bam"
 	output:
 		outputdir + "bwabigwig/{sample}_Aligned.sortedByCoord.out.bw"
 	params:
-		bwabigwigdir = outputdir + "bwabigwig"
+		bwabigwigdir = outputdir + "bwabigwig",
+		chrl = config["chrom_sizes"]
 	log:
 		outputdir + "logs/bigwig_{sample}.log"
 	benchmark:
@@ -460,86 +442,7 @@ rule bigwigbwa:
 		"bedtools genomecov -split -ibam {input.bam} -bg | LC_COLLATE=C sort -k1,1 -k2,2n > "
 		"{params.bwabigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph; "
 		"bedGraphToBigWig {params.bwabigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph "
-		"{input.chrl} {output}; rm -f {params.bwabigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph"
-
-## ------------------------------------------------------------------------------------ ##
-## Stringtie
-## ------------------------------------------------------------------------------------ ##
-# Transcript assembly using StringTie
-rule stringtie:
-	input:
-		bam = outputdir + "bwa/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
-	output:
-		gtf = outputdir + "stringtie/{sample}/{sample}.gtf"
-	log:
-		outputdir + "logs/stringtie_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/stringtie_{sample}.txt"
-	threads:
-		config["ncores"]
-	params:
-		stringtiegtf = config["gtf"],
-		stringtiedir = outputdir + "stringtie"
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'stringtie version:\n' > {log}; stringtie --version >> {log}; "
-		"stringtie {input.bam} -G {params.stringtiegtf} -x MT -eB -o {output.gtf}"
-
-## ------------------------------------------------------------------------------------ ##
-## Salmon abundance estimation
-## ------------------------------------------------------------------------------------ ##
-# Estimate abundances with Salmon
-rule salmonSE:
-	input:
-		index = config["salmonindex"] + "/hash.bin",
-		fastq = outputdir + "FASTQtrimmed/{sample}_trimmed.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}." + str(config["fqsuffix"]) + ".gz"
-	output:
-		outputdir + "salmon/{sample}/quant.sf"
-	log:
-		outputdir + "logs/salmon_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/salmon_{sample}.txt"
-	threads:
-		config["ncores"]
-	params:
-		salmonindex = config["salmonindex"],
-		fldMean = config["fldMean"],
-		fldSD = config["fldSD"],
-		salmondir = outputdir + "salmon"
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'Salmon version:\n' > {log}; salmon --version >> {log}; "
-		"salmon quant -i {params.salmonindex} -l A -r {input.fastq} "
-		"-o {params.salmondir}/{wildcards.sample} --seqBias --gcBias "
-		"--fldMean {params.fldMean} --fldSD {params.fldSD} -p {threads}"
-
-rule salmonPE:
-	input:
-		index = config["salmonindex"] + "/hash.bin",
-		fastq1 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext1"]) + "_val_1.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext1"]) + "." + str(config["fqsuffix"]) + ".gz",
-		fastq2 = outputdir + "FASTQtrimmed/{sample}_" + str(config["fqext2"]) + "_val_2.fq.gz" if config["run_trimming"] else FASTQdir + "{sample}_" + str(config["fqext2"]) + "." + str(config["fqsuffix"]) + ".gz"
-	output:
-		outputdir + "salmon/{sample}/quant.sf"
-	log:
-		outputdir + "logs/salmon_{sample}.log"
-	benchmark:
-		outputdir + "benchmarks/salmon_{sample}.txt"
-	threads:
-		config["ncores"]
-	params:
-		salmonindex = config["salmonindex"],
-		fldMean = config["fldMean"],
-		fldSD = config["fldSD"],
-		salmondir = outputdir + "salmon"
-	conda:
-		"envs/environment.yaml"
-	shell:
-		"echo 'Salmon version:\n' > {log}; salmon --version >> {log}; "
-		"salmon quant -i {params.salmonindex} -l A -1 {input.fastq1} -2 {input.fastq2} "
-		"-o {params.salmondir}/{wildcards.sample} --seqBias --gcBias "
-		"--fldMean {params.fldMean} --fldSD {params.fldSD} -p {threads}"
+		"{params.chrl} {output}; rm -f {params.bwabigwigdir}/{wildcards.sample}_Aligned.sortedByCoord.out.bedGraph"
 
 ## ------------------------------------------------------------------------------------ ##
 ## Input variable check
@@ -576,12 +479,11 @@ rule checkinputs:
         fqsuffix = str(config["fqsuffix"]),
         fqext1 = str(config["fqext1"]),
         fqext2 = str(config["fqext2"]),
-        run_camera = str(config["run_camera"]),
         organism = config["organism"]    
     conda:
 	    Renv
     shell:
-        '''{Rbin} CMD BATCH --no-restore --no-save "--args metafile='{params.metatxt}' design='{params.design}' contrast='{params.contrast}' outFile='{output}' gtf='{params.gtf}' genome='{params.genome}' fastqdir='{params.fastqdir}' fqsuffix='{params.fqsuffix}' fqext1='{params.fqext1}' fqext2='{params.fqext2}' txome='{params.txome}' run_camera='{params.run_camera}' organism='{params.organism}' {params.genesets} annotation='{params.annotation}'" {input.script} {log};
+        '''{Rbin} CMD BATCH --no-restore --no-save "--args metafile='{params.metatxt}' design='{params.design}' contrast='{params.contrast}' outFile='{output}' gtf='{params.gtf}' genome='{params.genome}' fastqdir='{params.fastqdir}' fqsuffix='{params.fqsuffix}' fqext1='{params.fqext1}' fqext2='{params.fqext2}' txome='{params.txome}' organism='{params.organism}' {params.genesets} annotation='{params.annotation}'" {input.script} {log};
         cat {output}
         '''
        
@@ -662,8 +564,7 @@ def shiny_params(wildcards):
 rule shiny:
 	input:
 		shiny_input,
-		rds = outputdir + "outputR/DRIMSeq_dtu.rds" if config["run_DRIMSeq"]
-			else outputdir + "outputR/edgeR_dge.rds",
+		rds = "outputR/edgeR_dge.rds",
 		script = "scripts/run_render.R",
 		gtf = config["gtf"],
 		template = "scripts/prepare_shiny.Rmd"
